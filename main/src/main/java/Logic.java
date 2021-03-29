@@ -17,14 +17,13 @@ public class Logic {
     /*  Button:onclick => checkLetter */
     public boolean checkLetter(String letter) {
         this.addUsedLetter(letter);
-        // onderste lijn moet misschien op een andere plaats staan wegens LOGIC!
-        if (guessedCount == max_guesses) this.loseGame();
-        return wordAnswer.contains(letter) && !this.usedLetters.contains(letter);
-        /* if word has been guessed eventually */
+        if ( wordAnswer.contains(letter) && !this.usedLetters.contains(letter) ) {
+            return true;
+        } else {
+            if (guessedCount == max_guesses) this.loseGame();
+            return false;
+        }
     }
-
-
-
 
     /*   Change text to output => winGame */
     public void winGame() {
