@@ -1,4 +1,4 @@
-package shapes;
+package domain.shapes;
 
 import java.util.Arrays;
 

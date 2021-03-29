@@ -1,4 +1,4 @@
-package shapes;
+package domain.shapes;
 
 abstract class Shape {
     public abstract void draw();

@@ -1,4 +1,4 @@
-package shapes;
+package domain.shapes;
 
 public class Line extends Shape {
 

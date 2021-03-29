@@ -1,4 +1,4 @@
-package domain;
+package domain.Game;
 
 import static java.lang.Integer.max;
 

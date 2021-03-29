@@ -1,4 +1,4 @@
-package shapes;
+package domain.shapes;
 
 public class Circle extends Shape{
     private Point center;

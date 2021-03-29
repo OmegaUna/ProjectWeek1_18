@@ -1,5 +1,5 @@
-import domain.Game;
-import domain.Player;
+import domain.Game.Game;
+import domain.Game.Player;
 
 import java.util.Scanner;
 
