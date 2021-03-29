@@ -8,7 +8,7 @@ public class Player {
     private int score;
 
     public Player(String name) {
-        this.name = name;
+        this.name = name; //TODO minstens 1 niet spatie teken
         this.score = 0;
     }
 

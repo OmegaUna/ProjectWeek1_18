@@ -39,6 +39,11 @@ public class Rectangle extends Shape {
     }
 
     @Override
+    public String boxAround() {
+        return this.toString() + String.format("\nOmhullende: %s - %d - %d", this.getLUCorner().toString(), this.getWidth(), this.getHeight());
+    }
+
+    @Override
     public void draw() {
         ; //TODO
     }

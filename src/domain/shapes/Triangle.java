@@ -4,6 +4,9 @@ import domain.exceptions.DomainException;
 
 import java.util.Arrays;
 
+import static java.lang.Integer.max;
+import static java.lang.Integer.min;
+
 public class Triangle extends Shape {
 
     private Point corner1;
@@ -70,6 +73,15 @@ public class Triangle extends Shape {
     public boolean equals(Triangle triangle) {
         this.sortCorners();
         return this.getCorner1() == triangle.getCorner1() && this.getCorner2() == triangle.getCorner2() && this.getCorner3() == triangle.getCorner3();
+    }
+
+    @Override
+    public String boxAround() {
+        Point boxPos = new Point(min(min(this.getCorner1().getX(), this.getCorner2().getX()), this.getCorner3().getX()),
+                min(min(this.getCorner1().getY(), this.getCorner2().getY()), this.getCorner3().getY()));
+        int width = max(max(this.getCorner1().getX(), this.getCorner2().getX()), this.getCorner3().getX()) - boxPos.getX();
+        int height = max(max(this.getCorner1().getY(), this.getCorner2().getY()), this.getCorner3().getY()) - boxPos.getY();
+        return this.toString() + String.format("\nOmhullende: %s - %d - %d", boxPos.toString(), width, height);
     }
 
     @Override
