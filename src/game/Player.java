@@ -1,11 +1,13 @@
 package game;
 
+import static java.lang.Integer.max;
+
 public class Player {
 
     private String name;
     private int score;
 
-    public void Player(String name) {
+    public Player(String name) {
         this.name = name;
         this.score = 0;
     }
@@ -28,6 +30,15 @@ public class Player {
 
     public void addToScore(int add) {
         this.score += add;
+    }
+
+    private void validateScore() {
+        this.setScore(max(0, this.score));
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return this.getName().equals(((Player) obj).getName()) && this.getScore() == ((Player) obj).getScore();
     }
 
     @Override
