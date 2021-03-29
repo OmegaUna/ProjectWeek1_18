@@ -8,12 +8,14 @@ public class Game {
     private String word;
     private Player player;
     private int maxGuesses;
+    private int wrongGuesses;
     private ArrayList<String> guessedChars = new ArrayList();
 
     public Game(String word, Player player, int maxGuesses) {
-        this.word = word;
+        this.word = word.toLowerCase();
         this.player = player;
         this.maxGuesses = maxGuesses;
+        this.wrongGuesses = 0;
     }
 
     public String getWord() {
@@ -32,8 +34,24 @@ public class Game {
         return wordState;
     }
 
+    private boolean isLetterInWord(String letter) {
+        return this.getWord().contains(letter.toLowerCase());
+    }
+
     public boolean complete() {
-        return this.getWordState("_").toLowerCase() == this.getWord().toLowerCase();
+        return this.getWordState("_").toLowerCase().equals(this.getWord());
+    }
+
+    public boolean lost() {
+        return this.getWrongGuesses() >= this.maxGuesses;
+    }
+
+    private int getWrongGuesses() {
+        return this.wrongGuesses;
+    }
+
+    public void addWrongGuess() {
+        this.wrongGuesses += 1;
     }
 
     public Player getPlayer() {
