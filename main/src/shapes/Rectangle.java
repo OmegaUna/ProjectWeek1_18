@@ -3,9 +3,12 @@ public class Rectangle {
     private Punt linkerBovenHoek;
 
     public Rectangle(Punt punt, int breedte, int hoogte) {
-            this.breedte = breedte;
-            this.hoogte = hoogte;
-            this.linkerBovenHoek = punt;
+        if(breedte <= 0) throw new IllegalArgumentException();
+        this.breedte = breedte;
+        if(hoogte <= 0) throw new IllegalArgumentException();
+        this.hoogte = hoogte;
+        if(punt == null) throw new IllegalArgumentException();
+        this.linkerBovenHoek = punt;
     }
 
     public int getBreedte() {
@@ -18,5 +21,13 @@ public class Rectangle {
 
     public Punt getLinkerBovenHoek() {
         return linkerBovenHoek;
+    }
+
+    public boolean equals(Object obj) {
+        return this.breedte == ((Rectangle) obj).getBreedte() && this.hoogte == ((Rectangle) obj).getHoogte() && this.linkerBovenHoek == ((Rectangle) obj).getLinkerBovenHoek();
+    }
+
+    public String toString() {
+        return "Rechthoek: linkerbovenhoek: (" + this.linkerBovenHoek.getX() + ", " + this.linkerBovenHoek.getY() + ") - breedte: " + this.getBreedte() + " - hoogte: " + this.getHoogte();
     }
 }
