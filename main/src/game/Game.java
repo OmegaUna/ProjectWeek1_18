@@ -8,9 +8,9 @@ public class Game {
     private String word;
     private Player player;
     private int maxGuesses;
-    private ArrayList<Character> guessedChars = new ArrayList();
+    private ArrayList<String> guessedChars = new ArrayList();
 
-    public void Game(String word, Player player, int maxGuesses) {
+    public Game(String word, Player player, int maxGuesses) {
         this.word = word;
         this.player = player;
         this.maxGuesses = maxGuesses;
@@ -23,13 +23,17 @@ public class Game {
     public String getWordState(String blank) {
         String wordState = "";
         for (Character letter : this.getWord().toCharArray()) {
-            if (this.getGuessedChars().contains(letter)) {
-                wordState.concat(letter.toString());
+            if (this.getGuessedChars().contains(letter.toString().toLowerCase())) {
+                wordState = wordState.concat(letter.toString().toLowerCase());
             } else {
-                wordState.concat(blank);
+                wordState = wordState.concat(blank);
             }
         }
         return wordState;
+    }
+
+    public boolean complete() {
+        return this.getWordState("_").toLowerCase() == this.getWord().toLowerCase();
     }
 
     public Player getPlayer() {
@@ -44,20 +48,20 @@ public class Game {
         this.maxGuesses = maxGuesses;
     }
 
-    public ArrayList<Character> getGuessedChars() {
+    public ArrayList<String> getGuessedChars() {
         return guessedChars;
     }
 
-    public void addGuessedChar(Character character) {
+    public void addGuessedChar(String character) {
         this.guessedChars.add(character);
     }
 
-    public boolean isValidGuess(Character character) {
-        return !this.getGuessedChars().contains(character);
+    public boolean isValidGuess(String character) {
+        return character.length() == 1 && !this.getGuessedChars().contains(character.toLowerCase());
     }
 
-    public boolean guess(Character character) {
-        addGuessedChar(character);
-        return this.getWord().indexOf(character) != -1;
+    public boolean guess(String character) {
+        addGuessedChar(character.toLowerCase());
+        return this.getWord().indexOf(character.toLowerCase()) != -1;
     }
 }
