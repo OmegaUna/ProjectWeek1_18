@@ -11,15 +11,9 @@ public class Menu extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        Parent root = FXMLLoader.load(getClass().getResource("ui.fxml"));
-
-        GridPane root = new GridPane();
-        Scene scene = new Scene(root, 300,275);
-
-        //new SpelerApp(root);
-
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Hangman");
-        primaryStage.setScene(scene);
+        primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
     }
 }
