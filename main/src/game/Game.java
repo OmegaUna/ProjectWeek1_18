@@ -23,13 +23,17 @@ public class Game {
     public String getWordState(String blank) {
         String wordState = "";
         for (Character letter : this.getWord().toCharArray()) {
-            if (this.getGuessedChars().contains(letter)) {
-                wordState.concat(letter.toString());
+            if (this.getGuessedChars().contains(letter.toString().toLowerCase())) {
+                wordState = wordState.concat(letter.toString().toLowerCase());
             } else {
-                wordState.concat(blank);
+                wordState = wordState.concat(blank);
             }
         }
         return wordState;
+    }
+
+    public boolean complete() {
+        return this.getWordState("_").toLowerCase() == this.getWord().toLowerCase();
     }
 
     public Player getPlayer() {
@@ -53,11 +57,11 @@ public class Game {
     }
 
     public boolean isValidGuess(String character) {
-        return character.length() == 1 && !this.getGuessedChars().contains(character);
+        return character.length() == 1 && !this.getGuessedChars().contains(character.toLowerCase());
     }
 
     public boolean guess(String character) {
-        addGuessedChar(character);
-        return this.getWord().indexOf(character) != -1;
+        addGuessedChar(character.toLowerCase());
+        return this.getWord().indexOf(character.toLowerCase()) != -1;
     }
 }
