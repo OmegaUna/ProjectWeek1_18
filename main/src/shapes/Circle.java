@@ -42,6 +42,6 @@ public class Circle {
 
     @Override
     public String toString() {
-        return String.format("%s r=%d", this.getCenter().toString(), this.getRadius());
+        return String.format("Cirkel: middelpunt: (%d, %d) - straal: %d", this.getCenter().x, this.getCenter().y, this.getRadius());
     }
 }

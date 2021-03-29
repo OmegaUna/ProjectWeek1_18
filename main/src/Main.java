@@ -1,11 +1,8 @@
 import game.Game;
 import game.Player;
-import shapes.Circle;
 
-import java.awt.*;
 import java.util.Scanner;
 
-import static javafx.application.Application.launch;
 
 public class Main {
 
@@ -14,7 +11,6 @@ public class Main {
     public static void main(String[] args) {
 //        launch(args);
         boolean epicGamerMoment = true;
-        System.out.println(new Circle(new Point(10, 5), 20));
         Player player = new Player("Dummy");
         Game game = new Game("test", player, MAXGUESSES);
         Scanner s = new Scanner(System.in);
