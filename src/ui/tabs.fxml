@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="center" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main">
+    <children>
+        <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="Game">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Pane layoutX="66.0" layoutY="131.0" prefHeight="39.0" prefWidth="179.0" />
+                        <Pane layoutX="14.0" layoutY="294.0" prefHeight="63.0" prefWidth="566.0">
+                           <children>
+                              <Button defaultButton="true" layoutX="475.0" layoutY="19.0" mnemonicParsing="false" onAction="#uiExecuteGuess" style="-fx-background-color: #39f;" text="Try character" textFill="WHITE" />
+                              <TextField layoutX="14.0" layoutY="19.0" prefHeight="25.0" prefWidth="176.0" />
+                              <Label layoutX="14.0" layoutY="41.0" prefHeight="17.0" prefWidth="71.0" text="hintText" />
+                           </children>
+                        </Pane>
+                        <Label layoutX="14.0" layoutY="264.0" prefHeight="30.0" prefWidth="144.0" text="game To Player">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children></AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Settings">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</VBox>

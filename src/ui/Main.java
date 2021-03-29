@@ -20,10 +20,14 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("ui.fxml"));
 
         // window placeholder voor als er niks load
+        Scene mainScene = new Scene(root, 640,480);
+        mainScene.getStylesheets().add("master.css");
         primaryStage.setTitle("Hangman");
-        primaryStage.setScene(new Scene(root, 640,480));
+        primaryStage.setScene(mainScene);
         primaryStage.show();
 
+        /*FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("tabs.fxml"));*/
         Menu menu = new Menu(primaryStage);
         menu.showScene();
 

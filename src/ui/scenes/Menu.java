@@ -27,11 +27,12 @@ import java.io.IOException;
 
 
 public class Menu {
-
+    private FXMLLoader loader;
     public Scene scene;
     private final Stage parentScene;
 
     public Menu(Stage parentScene) {
+        //this.loader = loader;
         this.parentScene = parentScene;
         this.parentScene.setTitle("Hangman");
 
@@ -42,10 +43,12 @@ public class Menu {
         pane.getChildren().add(new Text("Dit is Hangman! Klik hieronder om de game te beginnen!"));
 
         Button btn_go_game = new Button();
+        btn_go_game.getStyleClass().add("btn-primary");
         btn_go_game.setText("Hangman spelen");
         btn_go_game.setOnAction(event -> {
             System.out.println("User went to game scene.");
             GameCycle gameCycle = new GameCycle(this.parentScene);
+            //GameCycle gameCycle = new GameCycle(this.parentScene, this.loader);
             gameCycle.showScene();
         });
         pane.getChildren().add(btn_go_game);
