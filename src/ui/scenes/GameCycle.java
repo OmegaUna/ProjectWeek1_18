@@ -21,6 +21,8 @@ public class GameCycle {
     private Scene scene;
     private final Stage parentScene;
     private int MAXGUESSES = 14;
+    private Text inputHintText = new Text("");
+    private Text gameToPlayerText = new Text("");
 
     public GameCycle(Stage parentScene) {
         this.parentScene = parentScene;
@@ -28,7 +30,7 @@ public class GameCycle {
 
         Player player = new Player("Speler1");
         this.game = new Game("polymorphism", player, MAXGUESSES);
-        this.startCycle(this.game, this.parentScene, new Text(""));
+        this.startCycle(this.game, this.parentScene, inputHintText);
     }
     public void startCycle(Game game, Stage parentScene, Text inputHintText) {
         boolean epicGamerMoment = true;
@@ -49,6 +51,8 @@ public class GameCycle {
                 } else {
                     inputHintText.setText("Your guess is not valid, please try again.");
                 }
+                addWordToScreen();
+                addGuessedCharsToScreen();
                 if ( !game.complete() && !game.lost() ) {
                     ResultScreen resultScreen = new ResultScreen(parentScene, false);
                     resultScreen.showScene();
@@ -68,22 +72,16 @@ public class GameCycle {
         pane.getChildren().add(submit_btn);
         this.scene = new Scene(pane, 640,480);
     }
-    public void cycle() {
-            do {
-                System.out.println("Guess a character: ");
-                guess = s.nextLine();
-            } while (!game.isValidGuess(guess));
-            if (!game.guess(guess)) {
-                game.addWrongGuess();
-            }
-    }
     public void addWordToScreen() {
         System.out.println(game.getWordState("_"));
-         return game.getWordState("_");
+        this.gameToPlayerText.setText(game.getWordState("_"));
     }
     public void addGuessedCharsToScreen() {
         System.out.println(game.getGuessedChars());
-         return game.getGuessedChars();
+        for (String guessedChar : game.getGuessedChars()) {
+            this.gameToPlayerText.setText(guessedChar);
+        }
+
     }
     public void showScene() {
         this.parentScene.setScene(this.scene);

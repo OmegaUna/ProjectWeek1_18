@@ -1,5 +1,5 @@
-import game.Game;
-import game.Player;
+import ui.logic.Game;
+import ui.logic.Player;
 
 import java.util.Scanner;
 
