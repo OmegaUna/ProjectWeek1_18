@@ -1,11 +1,11 @@
-import ui.logic.Game;
-import ui.logic.Player;
+import domain.Game;
+import domain.Player;
 
 import java.util.Scanner;
 
 import static javafx.application.Application.launch;
 
-public class Main {
+public class ConsoleMain {
 
     private static int MAXGUESSES = 14;
 

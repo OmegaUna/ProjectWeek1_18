@@ -1,4 +1,4 @@
-package ui.logic;
+package domain;
 
 import java.util.ArrayList;
 

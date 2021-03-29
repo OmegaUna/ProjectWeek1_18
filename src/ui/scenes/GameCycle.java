@@ -1,25 +1,16 @@
 package ui.scenes;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.paint.Paint;
-import ui.MainScreenController;
-import ui.logic.Game;
-import ui.logic.Player;
+import domain.Game;
+import domain.Player;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
-import java.util.ArrayList;
 
 public class GameCycle {
     private FXMLLoader loader;
