@@ -8,9 +8,9 @@ public class Game {
     private String word;
     private Player player;
     private int maxGuesses;
-    private ArrayList<Character> guessedChars = new ArrayList();
+    private ArrayList<String> guessedChars = new ArrayList();
 
-    public void Game(String word, Player player, int maxGuesses) {
+    public Game(String word, Player player, int maxGuesses) {
         this.word = word;
         this.player = player;
         this.maxGuesses = maxGuesses;
@@ -44,19 +44,19 @@ public class Game {
         this.maxGuesses = maxGuesses;
     }
 
-    public ArrayList<Character> getGuessedChars() {
+    public ArrayList<String> getGuessedChars() {
         return guessedChars;
     }
 
-    public void addGuessedChar(Character character) {
+    public void addGuessedChar(String character) {
         this.guessedChars.add(character);
     }
 
-    public boolean isValidGuess(Character character) {
-        return !this.getGuessedChars().contains(character);
+    public boolean isValidGuess(String character) {
+        return character.length() == 1 && !this.getGuessedChars().contains(character);
     }
 
-    public boolean guess(Character character) {
+    public boolean guess(String character) {
         addGuessedChar(character);
         return this.getWord().indexOf(character) != -1;
     }
