@@ -27,18 +27,11 @@ import java.io.IOException;
 public class Menu extends Application {
 
     @Override
-    public void start(Stage primaryStage) {
-        Parent root = FXMLLoader.load(getClass().getResource("ui.fxml"));
-
-        GridPane root = new GridPane();
-        Scene scene = new Scene(root, 300,275);
-
-        //new SpelerApp(root);
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("ui.fxml"));
 
         VBox pane = new VBox();
-        Scene scene = new Scene(pane, 640,480);
+        Scene scene = new Scene(pane, 640, 480);
 
         //new SpelerApp(root);
         Text title = new Text();

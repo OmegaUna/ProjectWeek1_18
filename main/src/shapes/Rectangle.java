@@ -1,33 +1,45 @@
+package shapes;
+
+import java.awt.*;
+
 public class Rectangle {
-    private int breedte, hoogte;
-    private Punt linkerBovenHoek;
 
-    public Rectangle(Punt punt, int breedte, int hoogte) {
-        if(breedte <= 0) throw new IllegalArgumentException();
-        this.breedte = breedte;
-        if(hoogte <= 0) throw new IllegalArgumentException();
-        this.hoogte = hoogte;
-        if(punt == null) throw new IllegalArgumentException();
-        this.linkerBovenHoek = punt;
+    private final int width;
+    private final int height;
+    private final Point lUCorner;
+
+    public Rectangle(Point punt, int height, int width) {
+        if (height <= 0) {
+            throw new IllegalArgumentException("Width too small (Should be >0)");
+        } else if (width <= 0) {
+            throw new IllegalArgumentException("Height too small (Should be >0)");
+        } else if (punt == null) {
+            throw new IllegalArgumentException("Point can't be null");
+        } else {
+            this.width = width;
+            this.height = height;
+            this.lUCorner = punt;
+        }
     }
 
-    public int getBreedte() {
-        return breedte;
+    public int getWidth() {
+        return width;
     }
 
-    public int getHoogte() {
-        return hoogte;
+    public int getHeight() {
+        return height;
     }
 
-    public Punt getLinkerBovenHoek() {
-        return linkerBovenHoek;
+    public Point getLUCorner() {
+        return lUCorner;
     }
 
     public boolean equals(Object obj) {
-        return this.breedte == ((Rectangle) obj).getBreedte() && this.hoogte == ((Rectangle) obj).getHoogte() && this.linkerBovenHoek == ((Rectangle) obj).getLinkerBovenHoek();
+        return this.lUCorner == ((Rectangle) obj).getLUCorner() && this.width == ((Rectangle) obj).getWidth() && this.height == ((Rectangle) obj).getHeight();
     }
 
     public String toString() {
-        return "Rechthoek: linkerbovenhoek: (" + this.linkerBovenHoek.getX() + ", " + this.linkerBovenHoek.getY() + ") - breedte: " + this.getBreedte() + " - hoogte: " + this.getHoogte();
+        return String.format("Rechthoek: linkerbovenhoek: (%s, %s) - breedte: %s - hoogte: %s",
+                this.lUCorner.x, this.lUCorner.y, this.getWidth(), this.getHeight());
     }
 }
