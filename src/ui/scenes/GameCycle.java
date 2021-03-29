@@ -29,6 +29,7 @@ public class GameCycle {
     private int MAXGUESSES = 14;
     private Text inputHintText = new Text("");
     private Text gameToPlayerText = new Text("");
+    private Text guessedCharsText = new Text("");
 
     public GameCycle(Stage parentScene) {
         //this.loader = loader;
@@ -78,6 +79,7 @@ public class GameCycle {
         pane.getChildren().add(submit_btn);
         pane.getChildren().add(stop_game_btn);
         pane.getChildren().add(gameToPlayerText);
+        pane.getChildren().add(guessedCharsText);
         this.scene = new Scene(pane, 640,480);
     }
     public void uiExecuteGuess(String guess) {
@@ -111,7 +113,7 @@ public class GameCycle {
         for (String guessedChar : game.getGuessedChars()) {
             guessedChars.append(guessedChar).append(", ");
         }
-        this.gameToPlayerText.setText("Gegokte letters: " + guessedChars.toString());
+        this.guessedCharsText.setText("Gegokte letters: " + guessedChars.toString());
 
     }
     public void showScene() {

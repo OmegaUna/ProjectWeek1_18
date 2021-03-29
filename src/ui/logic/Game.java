@@ -44,6 +44,9 @@ public class Game {
     public boolean lost() {
         return this.getWrongGuesses() >= this.maxGuesses;
     }
+    public boolean won() {
+        return getWordState("_").equals(this.word);
+    }
 
     public int getWrongGuesses() {
         return this.wrongGuesses;
@@ -79,6 +82,6 @@ public class Game {
 
     public boolean guess(String character) {
         addGuessedChar(character.toLowerCase());
-        return this.getWord().indexOf(character.toLowerCase()) != -1;
+        return isLetterInWord(character);
     }
 }
