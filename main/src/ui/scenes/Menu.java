@@ -4,7 +4,6 @@ import javafx.application.Application;
 
 import javafx.stage.Stage;
 
-
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
@@ -30,31 +29,31 @@ import java.io.IOException;
 public class Menu {
 
     public Scene scene;
-    private final Stage parentGame;
+    private final Stage parentScene;
 
-    public Menu(Stage parentGame) {
-        this.parentGame = parentGame;
-        this.parentGame.setTitle("Hangman");
+    public Menu(Stage parentScene) {
+        this.parentScene = parentScene;
+        this.parentScene.setTitle("Hangman");
 
+        this.start();
+    }
+    public void start() {
         VBox pane = new VBox();
         pane.getChildren().add(new Text("Dit is Hangman! Klik hieronder om de game te beginnen!"));
 
         Button btn_go_game = new Button();
         btn_go_game.setText("Hangman spelen");
-        btn_go_game.setOnAction(new EventHandler<ActionEvent>() {
-
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("User went to game scene.");
-            }
+        btn_go_game.setOnAction(event -> {
+            System.out.println("User went to game scene.");
+            GameCycle gameCycle = new GameCycle(this.parentScene);
+            gameCycle.showScene();
         });
         pane.getChildren().add(btn_go_game);
-
         this.scene = new Scene(pane, 640,480);
     }
     public void showScene() {
-        this.parentGame.setScene(this.scene);
-        this.parentGame.show();
+        this.parentScene.setScene(this.scene);
+        this.parentScene.show();
     }
 
 }
