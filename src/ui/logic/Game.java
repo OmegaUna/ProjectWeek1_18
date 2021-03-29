@@ -44,9 +44,6 @@ public class Game {
     public boolean lost() {
         return this.getWrongGuesses() >= this.maxGuesses;
     }
-    public boolean won() {
-        return getWordState("_").equals(this.word);
-    }
 
     public int getWrongGuesses() {
         return this.wrongGuesses;

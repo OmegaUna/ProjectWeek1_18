@@ -34,7 +34,7 @@ public class GameCycle {
     public GameCycle(Stage parentScene) {
         //this.loader = loader;
         this.parentScene = parentScene;
-        this.parentScene.setTitle("Hangman");
+        this.parentScene.setTitle("Hangman | The Game");
 
         Player player = new Player("Speler1");
         this.game = new Game("polymorphism", player, MAXGUESSES);
@@ -49,7 +49,7 @@ public class GameCycle {
         TextField field = new TextField();
         field.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.ENTER) {
-                uiExecuteGuess(field.getText());
+                uiExecuteGuess(field.getText(), parentScene);
                 field.setText("");
             }
         });
@@ -57,7 +57,10 @@ public class GameCycle {
         Button submit_btn = new Button();
         submit_btn.setText("Try character");
         submit_btn.getStyleClass().add("btn-primary");
-        submit_btn.setOnAction(actionEvent -> uiExecuteGuess(field.getText()));
+        submit_btn.setOnAction(actionEvent -> {
+            uiExecuteGuess(field.getText(), parentScene);
+            field.setText("");
+        });
 
         Button stop_game_btn = new Button();
         stop_game_btn.getStyleClass().add("btn-danger");
@@ -82,7 +85,7 @@ public class GameCycle {
         pane.getChildren().add(guessedCharsText);
         this.scene = new Scene(pane, 640,480);
     }
-    public void uiExecuteGuess(String guess) {
+    public void uiExecuteGuess(String guess, Stage parentScene) {
         System.out.println("Player guesses on: " + guess);
 
         if ( game.isValidGuess(guess) ) {
@@ -97,9 +100,15 @@ public class GameCycle {
         }
         addWordToScreen();
         addGuessedCharsToScreen();
-        if ( game.complete() && game.lost() ) {
+        if ( game.lost() ) {
             // parentScene is empty
+            System.out.println("User lost the game!");
             ResultScreen resultScreen = new ResultScreen(parentScene, false);
+            resultScreen.showScene();
+        } else if ( game.complete() ) {
+            // parentScene is empty
+            System.out.println("User won the game!");
+            ResultScreen resultScreen = new ResultScreen(parentScene, true);
             resultScreen.showScene();
         }
     }

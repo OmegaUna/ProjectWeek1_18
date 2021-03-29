@@ -34,7 +34,7 @@ public class Menu {
     public Menu(Stage parentScene) {
         //this.loader = loader;
         this.parentScene = parentScene;
-        this.parentScene.setTitle("Hangman");
+        this.parentScene.setTitle("Hangman | Menu");
 
         this.start();
     }
