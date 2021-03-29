@@ -29,15 +29,14 @@ public class Line {
         return this.end;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        Point oStart = ((Line) obj).getStart();
-        Point oEnd = ((Line) obj).getEnd();
+    public boolean equals(Line line) {
+        Point oStart = line.getStart();
+        Point oEnd = line.getEnd();
         return (this.getStart() == oStart && this.getEnd() == oEnd) || (this.getStart() == oEnd && this.getEnd() == oStart);
     }
 
     @Override
     public String toString() {
-        return String.format("Lijn: startpunt: (%s, %s) - eindpunt: (%s, %s)", this.getStart().getX(), this.getStart().getY(), this.getEnd().getX(), this.getEnd().getY());
+        return String.format("Lijn: startpunt: %s - eindpunt: %s", this.getStart().toString(), this.getEnd().toString());
     }
 }

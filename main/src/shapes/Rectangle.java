@@ -32,12 +32,12 @@ public class Rectangle {
         return lUCorner;
     }
 
-    public boolean equals(Object obj) {
-        return this.lUCorner == ((Rectangle) obj).getLUCorner() && this.width == ((Rectangle) obj).getWidth() && this.height == ((Rectangle) obj).getHeight();
+    public boolean equals(Rectangle rectangle) {
+        return this.lUCorner == rectangle.getLUCorner() && this.width == rectangle.getWidth() && this.height == rectangle.getHeight();
     }
 
+    @Override
     public String toString() {
-        return String.format("Rechthoek: linkerbovenhoek: (%s, %s) - breedte: %s - hoogte: %s",
-                this.lUCorner.getX(), this.lUCorner.getY(), this.getWidth(), this.getHeight());
+        return String.format("Rechthoek: linkerbovenhoek: %s - breedte: %d - hoogte: %d", this.getLUCorner().toString(), this.getWidth(), this.getHeight());
     }
 }

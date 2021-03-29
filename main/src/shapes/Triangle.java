@@ -19,6 +19,7 @@ public class Triangle {
             this.corner1 = corner1;
             this.corner2 = corner2;
             this.corner3 = corner3;
+            this.sortCorners();
         }
     }
 
@@ -36,7 +37,7 @@ public class Triangle {
         return corner1;
     }
 
-    public void setCorner1(Point corner1) {
+    private void setCorner1(Point corner1) {
         this.corner1 = corner1;
     }
 
@@ -44,7 +45,7 @@ public class Triangle {
         return corner2;
     }
 
-    public void setCorner2(Point corner2) {
+    private void setCorner2(Point corner2) {
         this.corner2 = corner2;
     }
 
@@ -52,7 +53,7 @@ public class Triangle {
         return corner3;
     }
 
-    public void setCorner3(Point corner3) {
+    private void setCorner3(Point corner3) {
         this.corner3 = corner3;
     }
 
@@ -64,4 +65,13 @@ public class Triangle {
         this.setCorner3(corners[2]);
     }
 
+    public boolean equals(Triangle triangle) {
+        this.sortCorners();
+        return this.getCorner1() == triangle.getCorner1() && this.getCorner2() == triangle.getCorner2() && this.getCorner3() == triangle.getCorner3();
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Driehoek: hoekpunt1: %s - hoekpunt2: %s - hoekpunt3: %s", this.getCorner1().toString(), this.getCorner2().toString(), this.getCorner3().toString());
+    }
 }

@@ -31,13 +31,12 @@ public class Circle {
         this.radius = radius;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        return this.radius == ((Circle) obj).getRadius() && this.center == ((Circle) obj).getCenter();
+    public boolean equals(Circle circle) {
+        return this.radius == circle.getRadius() && this.center == circle.getCenter();
     }
 
     @Override
     public String toString() {
-        return String.format("Cirkel: middelpunt: (%d, %d) - straal: %d", this.getCenter().getX(), this.getCenter().getY(), this.getRadius());
+        return String.format("Cirkel: middelpunt: %s - straal: %d", this.getCenter().toString(), this.getRadius());
     }
 }
