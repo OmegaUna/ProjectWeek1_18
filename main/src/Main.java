@@ -3,7 +3,6 @@ import game.Player;
 
 import java.util.Scanner;
 
-import static javafx.application.Application.launch;
 
 public class Main {
 

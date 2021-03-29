@@ -1,10 +1,8 @@
 package ui;
 
 import javafx.application.Application;
-<<<<<<< Updated upstream
 import javafx.stage.Stage;
 
-=======
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
@@ -26,11 +24,9 @@ import java.awt.*;
 
 import java.io.IOException;
 
->>>>>>> Stashed changes
 public class Menu extends Application {
 
     @Override
-<<<<<<< Updated upstream
     public void start(Stage primaryStage) {
         Parent root = FXMLLoader.load(getClass().getResource("ui.fxml"));
 
@@ -38,7 +34,6 @@ public class Menu extends Application {
         Scene scene = new Scene(root, 300,275);
 
         //new SpelerApp(root);
-=======
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("ui.fxml"));
 
@@ -51,7 +46,6 @@ public class Menu extends Application {
         //title.setFont(new Font.font("Sans serif", ));
 
         pane.getChildren().add(title);
->>>>>>> Stashed changes
 
         primaryStage.setTitle("Hangman");
         primaryStage.setScene(scene);
