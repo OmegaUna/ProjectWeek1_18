@@ -1,5 +1,7 @@
 package domain.shapes;
 
+import domain.exceptions.DomainException;
+
 import java.util.Arrays;
 
 public class Triangle extends Shape {
@@ -8,13 +10,13 @@ public class Triangle extends Shape {
     private Point corner2;
     private Point corner3;
 
-    public Triangle(Point corner1, Point corner2, Point corner3) throws IllegalArgumentException {
+    public Triangle(Point corner1, Point corner2, Point corner3) throws DomainException {
         if (corner1 == corner2 || corner2 == corner3 || corner3 == corner1) {
-            throw new IllegalArgumentException("Two or more corners can't be at the same position.");
+            throw new DomainException("Two or more corners can't be at the same position.");
         } else if (corner1 == null || corner2 == null || corner3 == null) {
-            throw new IllegalArgumentException("Corner can't be null.");
+            throw new DomainException("Corner can't be null.");
         } else if (formALine(corner1, corner2, corner3)) {
-            throw new IllegalArgumentException("This triangle is a line...");
+            throw new DomainException("This triangle is a line...");
         } else {
             this.corner1 = corner1;
             this.corner2 = corner2;

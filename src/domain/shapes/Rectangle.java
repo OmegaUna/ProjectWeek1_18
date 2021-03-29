@@ -1,18 +1,20 @@
 package domain.shapes;
 
+import domain.exceptions.DomainException;
+
 public class Rectangle extends Shape {
 
     private final int width;
     private final int height;
     private final Point lUCorner;
 
-    public Rectangle(Point punt, int height, int width) {
+    public Rectangle(Point punt, int height, int width) throws DomainException {
         if (height <= 0) {
-            throw new IllegalArgumentException("Width too small (Should be >0)");
+            throw new DomainException("Width too small (Should be >0)");
         } else if (width <= 0) {
-            throw new IllegalArgumentException("Height too small (Should be >0)");
+            throw new DomainException("Height too small (Should be >0)");
         } else if (punt == null) {
-            throw new IllegalArgumentException("Point can't be null");
+            throw new DomainException("Point can't be null");
         } else {
             this.width = width;
             this.height = height;

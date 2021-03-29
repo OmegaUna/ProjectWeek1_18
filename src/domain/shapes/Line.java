@@ -1,15 +1,17 @@
 package domain.shapes;
 
+import domain.exceptions.DomainException;
+
 public class Line extends Shape {
 
     Point start;
     Point end;
 
-    public Line(Point start, Point end) throws IllegalArgumentException {
+    public Line(Point start, Point end) throws DomainException {
         if (start == end) {
-            throw new IllegalArgumentException("Start can't be the same as the end.");
+            throw new DomainException("Start can't be the same as the end.");
         } else if (start == null || end == null) {
-            throw new IllegalArgumentException("Start and end can't be null.");
+            throw new DomainException("Start and end can't be null.");
         } else {
             this.start = start;
             this.end = end;

@@ -1,14 +1,16 @@
 package domain.shapes;
 
+import domain.exceptions.DomainException;
+
 public class Circle extends Shape{
     private Point center;
     private int radius;
 
-    public Circle(Point center, int radius) throws IllegalArgumentException {
+    public Circle(Point center, int radius) throws DomainException {
         if (radius < 0) {
-            throw new IllegalArgumentException("radius too small (Has to be at least 0)");
+            throw new DomainException("radius too small (Has to be at least 0)");
         } else if (center == null) {
-            throw new IllegalArgumentException("Circle center is null");
+            throw new DomainException("Circle center is null");
         } else {
             this.center = center;
             this.radius = radius;
