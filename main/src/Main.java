@@ -5,9 +5,8 @@ import java.util.Scanner;
 
 public class Main {
 
-    private static boolean epicGamerMoment = true;
-
-    public void main() {
+    public static void main() {
+        boolean epicGamerMoment = true;
         Player player = new Player("Dummy");
         Game game = new Game("Test", player, 14);
         Scanner s = new Scanner(System.in);
