@@ -21,7 +21,7 @@ public class GameCycle extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("ui.fxml"));
-
+        //x
         VBox pane = new VBox();
         Scene scene = new Scene(pane, 640,480);
 
