@@ -2,7 +2,7 @@ package shapes;
 
 import java.util.Arrays;
 
-public class Triangle {
+public class Triangle extends Shape {
 
     private Point corner1;
     private Point corner2;
@@ -68,6 +68,11 @@ public class Triangle {
     public boolean equals(Triangle triangle) {
         this.sortCorners();
         return this.getCorner1() == triangle.getCorner1() && this.getCorner2() == triangle.getCorner2() && this.getCorner3() == triangle.getCorner3();
+    }
+
+    @Override
+    public void draw() {
+        ; //TODO
     }
 
     @Override

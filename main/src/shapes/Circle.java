@@ -1,6 +1,6 @@
 package shapes;
 
-public class Circle {
+public class Circle extends Shape{
     private Point center;
     private int radius;
 
@@ -33,6 +33,11 @@ public class Circle {
 
     public boolean equals(Circle circle) {
         return this.radius == circle.getRadius() && this.center == circle.getCenter();
+    }
+
+    @Override
+    public void draw() {
+        ; //TODO
     }
 
     @Override

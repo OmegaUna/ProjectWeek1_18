@@ -1,6 +1,6 @@
 package shapes;
 
-public class Line {
+public class Line extends Shape {
 
     Point start;
     Point end;
@@ -33,6 +33,11 @@ public class Line {
         Point oStart = line.getStart();
         Point oEnd = line.getEnd();
         return (this.getStart() == oStart && this.getEnd() == oEnd) || (this.getStart() == oEnd && this.getEnd() == oStart);
+    }
+
+    @Override
+    public void draw() {
+        ; //TODO
     }
 
     @Override

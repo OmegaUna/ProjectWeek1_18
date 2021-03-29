@@ -1,6 +1,6 @@
 package shapes;
 
-public class Rectangle {
+public class Rectangle extends Shape {
 
     private final int width;
     private final int height;
@@ -34,6 +34,11 @@ public class Rectangle {
 
     public boolean equals(Rectangle rectangle) {
         return this.lUCorner == rectangle.getLUCorner() && this.width == rectangle.getWidth() && this.height == rectangle.getHeight();
+    }
+
+    @Override
+    public void draw() {
+        ; //TODO
     }
 
     @Override
