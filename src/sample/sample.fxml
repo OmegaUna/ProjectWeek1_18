@@ -3,10 +3,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<<<<<<< HEAD:out/production/copy_to_fx/ui/ui.fxml
-<GridPane fx:controller="ui.Main"
-=======
 <GridPane fx:controller="sample.Main"
->>>>>>> 940c7b2b10e61cb45490e868e586fd36bd0a612a:out/production/copy_to_fx/sample/sample.fxml
           xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
 </GridPane>
