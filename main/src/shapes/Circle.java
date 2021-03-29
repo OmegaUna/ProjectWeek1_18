@@ -1,9 +1,5 @@
 package shapes;
 
-import com.sun.javaws.exceptions.InvalidArgumentException;
-
-import java.awt.*;
-
 public class Circle {
     private Point center;
     private int radius;
@@ -42,6 +38,6 @@ public class Circle {
 
     @Override
     public String toString() {
-        return String.format("Cirkel: middelpunt: (%d, %d) - straal: %d", this.getCenter().x, this.getCenter().y, this.getRadius());
+        return String.format("Cirkel: middelpunt: (%d, %d) - straal: %d", this.getCenter().getX(), this.getCenter().getY(), this.getRadius());
     }
 }

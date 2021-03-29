@@ -1,7 +1,5 @@
 package shapes;
 
-import java.awt.*;
-
 public class Rectangle {
 
     private final int width;
@@ -40,6 +38,6 @@ public class Rectangle {
 
     public String toString() {
         return String.format("Rechthoek: linkerbovenhoek: (%s, %s) - breedte: %s - hoogte: %s",
-                this.lUCorner.x, this.lUCorner.y, this.getWidth(), this.getHeight());
+                this.lUCorner.getX(), this.lUCorner.getY(), this.getWidth(), this.getHeight());
     }
 }
