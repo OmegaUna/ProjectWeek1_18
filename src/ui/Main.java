@@ -24,7 +24,6 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 640,480));
         primaryStage.show();
 
-
         Menu menu = new Menu(primaryStage);
         menu.showScene();
 

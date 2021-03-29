@@ -1,6 +1,5 @@
-package game;
+package ui.logic;
 
-import java.security.InvalidParameterException;
 import java.util.ArrayList;
 
 public class Game {
