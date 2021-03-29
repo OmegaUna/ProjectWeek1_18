@@ -1,8 +1,8 @@
 package ui.scenes;
 
 import javafx.fxml.FXMLLoader;
-import domain.Game.Game;
-import domain.Game.Player;
+import domain.game.Game;
+import domain.game.Player;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;

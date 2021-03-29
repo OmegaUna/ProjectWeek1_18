@@ -7,7 +7,7 @@ public class Circle extends Shape{
     private int radius;
 
     public Circle(Point center, int radius) throws DomainException {
-        if (radius < 0) {
+        if (radius <= 0) {
             throw new DomainException("radius too small (Has to be at least 0)");
         } else if (center == null) {
             throw new DomainException("Circle center is null");
