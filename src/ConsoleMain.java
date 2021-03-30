@@ -1,3 +1,4 @@
+import domain.exceptions.DomainException;
 import domain.game.Game;
 import domain.game.Player;
 
@@ -9,7 +10,7 @@ public class ConsoleMain {
 
     private static int MAXGUESSES = 14;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws DomainException {
 //        launch(args);
         boolean epicGamerMoment = true;
         Player player = new Player("Dummy");

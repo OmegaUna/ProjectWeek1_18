@@ -1,15 +1,25 @@
 package domain.game;
 
+import domain.exceptions.DomainException;
+
 import static java.lang.Integer.max;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 public class Player {
 
     private String name;
     private int score;
 
-    public Player(String name) {
-        this.name = name; //TODO minstens 1 niet spatie teken
-        this.score = 0;
+    public Player(String name) throws DomainException {
+        Pattern p = Pattern.compile("[\\s\\S]*\\S[\\s\\S]*");
+        Matcher matcher = p.matcher(name);
+        if (matcher.find()) {
+            this.name = name;
+            this.score = 0;
+        } else {
+            throw new DomainException();
+        }
     }
 
     public String getName() {
