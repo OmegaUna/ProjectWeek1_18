@@ -5,7 +5,7 @@ import domain.exceptions.DomainException;
 import static java.lang.Integer.max;
 import static java.lang.Integer.min;
 
-public class LijnStuk extends Shape {
+public class LijnStuk extends Vorm {
 
     Punt start;
     Punt end;

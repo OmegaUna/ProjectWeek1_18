@@ -7,7 +7,7 @@ import java.util.Arrays;
 import static java.lang.Integer.max;
 import static java.lang.Integer.min;
 
-public class Triangle extends Shape {
+public class Triangle extends Vorm {
 
     private Punt corner1;
     private Punt corner2;
