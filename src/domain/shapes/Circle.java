@@ -1,6 +1,5 @@
 package domain.shapes;
-
-import domain.exceptions.DomainException;
+import domain.exceptions.*;
 
 public class Circle extends Shape{
     private Punt center;
@@ -34,6 +33,7 @@ public class Circle extends Shape{
     }
 
     public boolean equals(Circle circle) {
+        if(circle == null) return false;
         return this.radius == circle.getRadius() && this.center == circle.getCenter();
     }
 

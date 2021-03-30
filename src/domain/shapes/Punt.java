@@ -1,6 +1,6 @@
 package domain.shapes;
 
-import domain.exceptions.DomainException;
+//import domain.exceptions.DomainException;
 
 public class Punt {
 
