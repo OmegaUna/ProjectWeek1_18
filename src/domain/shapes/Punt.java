@@ -1,7 +1,5 @@
 package domain.shapes;
 
-//import domain.exceptions.DomainException;
-
 public class Punt {
 
     private final int x;

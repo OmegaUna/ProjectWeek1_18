@@ -3,7 +3,6 @@ package domain.game;
 import domain.shapes.Vorm;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class Tekening {
     private String naam;
@@ -23,18 +22,23 @@ public class Tekening {
     public String getNaam() {
         return this.naam;
     }
+
     public int getAantalVormen() {
         return this.vormen.size();
     }
+
     public Vorm getVorm(int index) {
         return this.vormen.get(index);
     }
+
     public void voegToe(Vorm vorm) {
         this.vormen.add(vorm);
     }
+
     public boolean bevat(Vorm vorm) {
         return this.vormen.contains(vorm);
     }
+
     public void verwijder(Vorm vorm) {
         this.vormen.remove(vorm);
     }
