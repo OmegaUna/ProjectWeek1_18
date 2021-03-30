@@ -2,7 +2,7 @@ package domain.shapes;
 
 import domain.exceptions.DomainException;
 
-public class Rechthoek extends Shape {
+public class Rechthoek extends Vorm {
 
     private final int width;
     private final int height;

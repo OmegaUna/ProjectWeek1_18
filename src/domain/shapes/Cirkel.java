@@ -2,7 +2,7 @@ package domain.shapes;
 
 import domain.exceptions.DomainException;
 
-public class Cirkel extends Shape{
+public class Cirkel extends Vorm {
     private Punt center;
     private int radius;
 
