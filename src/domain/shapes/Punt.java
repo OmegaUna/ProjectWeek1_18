@@ -1,11 +1,13 @@
 package domain.shapes;
 
-public class Point {
+import domain.exceptions.DomainException;
+
+public class Punt {
 
     private final int x;
     private final int y;
 
-    public Point(int x, int y) {
+    public Punt(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -18,12 +20,13 @@ public class Point {
         return y;
     }
 
-    public boolean equals(Point point) {
-        return this.getX() == point.getX() && this.getY() == point.getY();
+    public boolean equals(Punt punt) {
+        if(punt == null)return false;
+        return this.getX() == punt.getX() && this.getY() == punt.getY();
     }
 
-    public int compareTo(Point point) {
-        return this.getX() - point.getX();
+    public int compareTo(Punt punt) {
+        return this.getX() - punt.getX();
     }
 
     @Override

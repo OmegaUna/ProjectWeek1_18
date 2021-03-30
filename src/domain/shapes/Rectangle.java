@@ -6,15 +6,15 @@ public class Rectangle extends Shape {
 
     private final int width;
     private final int height;
-    private final Point lUCorner;
+    private final Punt lUCorner;
 
-    public Rectangle(Point punt, int height, int width) throws DomainException {
+    public Rectangle(Punt punt, int height, int width) throws DomainException {
         if (height <= 0) {
             throw new DomainException("Width too small (Should be >0)");
         } else if (width <= 0) {
             throw new DomainException("Height too small (Should be >0)");
         } else if (punt == null) {
-            throw new DomainException("Point can't be null");
+            throw new DomainException("Punt can't be null");
         } else {
             this.width = width;
             this.height = height;
@@ -30,7 +30,7 @@ public class Rectangle extends Shape {
         return height;
     }
 
-    public Point getLUCorner() {
+    public Punt getLUCorner() {
         return lUCorner;
     }
 

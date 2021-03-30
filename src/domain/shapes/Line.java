@@ -7,10 +7,10 @@ import static java.lang.Integer.min;
 
 public class Line extends Shape {
 
-    Point start;
-    Point end;
+    Punt start;
+    Punt end;
 
-    public Line(Point start, Point end) throws DomainException {
+    public Line(Punt start, Punt end) throws DomainException {
         if (start == end) {
             throw new DomainException("Start can't be the same as the end.");
         } else if (start == null || end == null) {
@@ -21,28 +21,28 @@ public class Line extends Shape {
         }
     }
 
-    private void setEndPoints(Point start, Point end) {
+    private void setEndPunts(Punt start, Punt end) {
         this.start = start;
         this.end = end;
     }
 
-    public Point getStart() {
+    public Punt getStart() {
         return this.start;
     }
 
-    public Point getEnd() {
+    public Punt getEnd() {
         return this.end;
     }
 
     public boolean equals(Line line) {
-        Point oStart = line.getStart();
-        Point oEnd = line.getEnd();
+        Punt oStart = line.getStart();
+        Punt oEnd = line.getEnd();
         return (this.getStart() == oStart && this.getEnd() == oEnd) || (this.getStart() == oEnd && this.getEnd() == oStart);
     }
 
     @Override
     public String boxAround() {
-        Point boxPos = new Point(min(this.getEnd().getX(), this.getEnd().getX()), min(this.getEnd().getY(), this.getEnd().getY()));
+        Punt boxPos = new Punt(min(this.getEnd().getX(), this.getEnd().getX()), min(this.getEnd().getY(), this.getEnd().getY()));
         int width = max(this.start.getX(), this.end.getX()) - boxPos.getX();
         int height = max(this.start.getY(), this.end.getY()) - boxPos.getY();
         return this.toString() + String.format("\nOmhullende: %s - %d - %d", boxPos.toString(), width, height);

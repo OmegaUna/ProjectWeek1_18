@@ -9,11 +9,11 @@ import static java.lang.Integer.min;
 
 public class Triangle extends Shape {
 
-    private Point corner1;
-    private Point corner2;
-    private Point corner3;
+    private Punt corner1;
+    private Punt corner2;
+    private Punt corner3;
 
-    public Triangle(Point corner1, Point corner2, Point corner3) throws DomainException {
+    public Triangle(Punt corner1, Punt corner2, Punt corner3) throws DomainException {
         if (corner1 == corner2 || corner2 == corner3 || corner3 == corner1) {
             throw new DomainException("Two or more corners can't be at the same position.");
         } else if (corner1 == null || corner2 == null || corner3 == null) {
@@ -28,7 +28,7 @@ public class Triangle extends Shape {
         }
     }
 
-    private boolean formALine(Point p1, Point p2, Point p3) {
+    private boolean formALine(Punt p1, Punt p2, Punt p3) {
         int x1 = p1.getX();
         int y1 = p1.getY();
         int x2 = p2.getX();
@@ -38,32 +38,32 @@ public class Triangle extends Shape {
         return (x2 - x1) * (y3 - y1) == (x3 - x1) * (y2 - y1);
     }
 
-    public Point getCorner1() {
+    public Punt getCorner1() {
         return corner1;
     }
 
-    private void setCorner1(Point corner1) {
+    private void setCorner1(Punt corner1) {
         this.corner1 = corner1;
     }
 
-    public Point getCorner2() {
+    public Punt getCorner2() {
         return corner2;
     }
 
-    private void setCorner2(Point corner2) {
+    private void setCorner2(Punt corner2) {
         this.corner2 = corner2;
     }
 
-    public Point getCorner3() {
+    public Punt getCorner3() {
         return corner3;
     }
 
-    private void setCorner3(Point corner3) {
+    private void setCorner3(Punt corner3) {
         this.corner3 = corner3;
     }
 
     private void sortCorners() {
-        Point[] corners = {this.getCorner1(), this.getCorner2(), this.getCorner3()};
+        Punt[] corners = {this.getCorner1(), this.getCorner2(), this.getCorner3()};
         Arrays.sort(corners);
         this.setCorner1(corners[0]);
         this.setCorner2(corners[1]);
@@ -77,7 +77,7 @@ public class Triangle extends Shape {
 
     @Override
     public String boxAround() {
-        Point boxPos = new Point(min(min(this.getCorner1().getX(), this.getCorner2().getX()), this.getCorner3().getX()),
+        Punt boxPos = new Punt(min(min(this.getCorner1().getX(), this.getCorner2().getX()), this.getCorner3().getX()),
                 min(min(this.getCorner1().getY(), this.getCorner2().getY()), this.getCorner3().getY()));
         int width = max(max(this.getCorner1().getX(), this.getCorner2().getX()), this.getCorner3().getX()) - boxPos.getX();
         int height = max(max(this.getCorner1().getY(), this.getCorner2().getY()), this.getCorner3().getY()) - boxPos.getY();

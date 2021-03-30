@@ -4,9 +4,9 @@ public class BoxAround {
 
     private final int width;
     private final int height;
-    private final Point lUCorner;
+    private final Punt lUCorner;
 
-    public BoxAround(Point lUCorner, int width, int height) {
+    public BoxAround(Punt lUCorner, int width, int height) {
         this.lUCorner = lUCorner;
         this.width = width;
         this.height = height;
@@ -20,7 +20,7 @@ public class BoxAround {
         return height;
     }
 
-    public Point getLUCorner() {
+    public Punt getLUCorner() {
         return lUCorner;
     }
 
