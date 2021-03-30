@@ -2,13 +2,13 @@ package domain.shapes;
 
 import domain.exceptions.DomainException;
 
-public class Rectangle extends Shape {
+public class Rechthoek extends Shape {
 
     private final int width;
     private final int height;
     private final Punt lUCorner;
 
-    public Rectangle(Punt punt, int height, int width) throws DomainException {
+    public Rechthoek(Punt punt, int height, int width) throws DomainException {
         if (height <= 0) {
             throw new DomainException("Width too small (Should be >0)");
         } else if (width <= 0) {
@@ -34,8 +34,9 @@ public class Rectangle extends Shape {
         return lUCorner;
     }
 
-    public boolean equals(Rectangle rectangle) {
-        return this.lUCorner == rectangle.getLUCorner() && this.width == rectangle.getWidth() && this.height == rectangle.getHeight();
+    public boolean equals(Rechthoek rechthoek) {
+        if (rechthoek==null) return false;
+        return this.lUCorner == rechthoek.getLUCorner() && this.width == rechthoek.getWidth() && this.height == rechthoek.getHeight();
     }
 
     @Override
