@@ -1,13 +1,13 @@
-package domain.game;
+package domain.Game;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class WoordenLijst {
+public class Woordlijst {
     private final ArrayList<String> woordenLijst;
-    public WoordenLijst() {
+    public Woordlijst() {
         this.woordenLijst = new ArrayList<>();
     }
     // nothing makes sense but okay!
