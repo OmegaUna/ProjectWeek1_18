@@ -1,5 +1,7 @@
 package domain.game;
 
+import domain.exceptions.DomainException;
+import domain.shapes.Omhullende;
 import domain.shapes.Vorm;
 
 import java.util.ArrayList;
@@ -19,6 +21,7 @@ public class Tekening {
     public static boolean isValidNaam(String naamTekening) {
         return !naamTekening.trim().isEmpty();
     }
+
     public String getNaam() {
         return this.naam;
     }
@@ -31,8 +34,17 @@ public class Tekening {
         return this.vormen.get(index);
     }
 
-    public void voegToe(Vorm vorm) {
-        this.vormen.add(vorm);
+    public void voegToe(Vorm vorm) throws DomainException {
+        if (this.pastVorm(vorm)) {
+            this.vormen.add(vorm);
+        } else {
+            throw new DomainException("Vorm past niet (ik herhaal: NIET) op het scherm.");
+        }
+    }
+
+    private boolean pastVorm(Vorm vorm) throws DomainException {
+        return !(vorm.omhullende().getMinX() < this.MIN_X || vorm.omhullende().getMinY() < this.MIN_Y ||
+                vorm.omhullende().getMaxX() > this.MAX_X || vorm.omhullende().getMaxY() > this.MAX_Y);
     }
 
     public boolean bevat(Vorm vorm) {
@@ -55,6 +67,7 @@ public class Tekening {
                 naam.equals(tekening.naam) &&
                 vormen.equals(tekening.vormen);
     }
+
     @Override
     public String toString() {
         return "Tekening{" +
