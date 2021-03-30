@@ -2,6 +2,8 @@ package domain.shapes;
 
 import domain.exceptions.DomainException;
 
+import javax.swing.*;
+
 public class Circle extends Shape{
     private Point center;
     private int radius;
@@ -38,16 +40,11 @@ public class Circle extends Shape{
     }
 
     @Override
-    public String boxAround() {
+    public BoxAround boxAround() {
         Point boxPos = new Point(this.getCenter().getX() - this.getRadius(), this.getCenter().getY() - this.getRadius());
         int width = this.getRadius() * 2;
         int height = this.getRadius() * 2;
-        return this.toString() + String.format("\nOmhullende: %s - %d - %d", boxPos.toString(), width, height);
-    }
-
-    @Override
-    public void draw() {
-        ; //TODO
+        return new BoxAround(boxPos, width, height);
     }
 
     @Override
