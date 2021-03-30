@@ -8,8 +8,10 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
+import java.util.function.BinaryOperator;
+
 @RunWith(Suite.class)
-@SuiteClasses({ PuntTest.class, SpelerTest.class, CircleTest.class, LijnstukTest.class})
+@SuiteClasses({ PuntTest.class, SpelerTest.class, CircleTest.class, LijnstukTest.class, BoxAroundTest.class})
 public class AllTests {
 
 }
