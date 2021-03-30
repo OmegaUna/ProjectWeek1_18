@@ -42,16 +42,11 @@ public class LijnStuk extends Shape {
         return this.getStart().equals(oStart) && this.getEnd().equals(oEnd);
     }
     @Override
-    public String boxAround() {
+    public Omhullende omhullende() throws DomainException {
         Punt boxPos = new Punt(min(this.getEnd().getX(), this.getEnd().getX()), min(this.getEnd().getY(), this.getEnd().getY()));
         int width = max(this.start.getX(), this.end.getX()) - boxPos.getX();
         int height = max(this.start.getY(), this.end.getY()) - boxPos.getY();
-        return this.toString() + String.format("\nOmhullende: %s - %d - %d", boxPos.toString(), width, height);
-    }
-
-    @Override
-    public void draw() {
-        ; //TODO
+        return new Omhullende(boxPos, width, height);
     }
 
     @Override

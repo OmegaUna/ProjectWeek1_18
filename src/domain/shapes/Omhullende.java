@@ -2,13 +2,13 @@ package domain.shapes;
 
 import domain.exceptions.DomainException;
 
-public class BoxAround {
+public class Omhullende {
 
     private final int width;
     private final int height;
     private final Punt lUCorner;
 
-    public BoxAround(Punt lUCorner, int width, int height) throws DomainException {
+    public Omhullende(Punt lUCorner, int width, int height) throws DomainException {
         if(height<0) throw new DomainException("Hoogte was kleiner dan 0");
         if(lUCorner==null) throw new DomainException("Linkerbovenhoek was null");
         if(width<0) throw new DomainException("Breedte was kleiner dan 0");
@@ -45,7 +45,7 @@ public class BoxAround {
         return this.lUCorner.getY() + this.getHeight();
     }
 
-    public boolean equals(BoxAround boxAround) {
+    public boolean equals(Omhullende boxAround) {
         if(boxAround==null) return false;
         return this.lUCorner == boxAround.getLUCorner() && this.width == boxAround.getWidth() && this.height == boxAround.getHeight();
     }

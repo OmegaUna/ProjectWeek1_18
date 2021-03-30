@@ -40,13 +40,8 @@ public class Rechthoek extends Shape {
     }
 
     @Override
-    public String boxAround() {
-        return this.toString() + String.format("\nOmhullende: %s - %d - %d", this.getLUCorner().toString(), this.getWidth(), this.getHeight());
-    }
-
-    @Override
-    public void draw() {
-        ; //TODO
+    public Omhullende omhullende() throws DomainException {
+        return new Omhullende(this.lUCorner, width, height);
     }
 
     @Override
