@@ -1,5 +1,6 @@
-import domain.game.Game;
-import domain.game.Player;
+import domain.Game.Game;
+import domain.Game.Speler;
+import domain.exceptions.DomainException;
 
 import java.util.Scanner;
 
@@ -9,11 +10,11 @@ public class ConsoleMain {
 
     private static int MAXGUESSES = 14;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws DomainException {
 //        launch(args);
         boolean epicGamerMoment = true;
-        Player player = new Player("Dummy");
-        Game game = new Game("test", player, MAXGUESSES);
+        Speler speler = new Speler("Dummy");
+        Game game = new Game("test", speler, MAXGUESSES);
         Scanner s = new Scanner(System.in);
         String guess;
         while (!game.complete() && !game.lost()) {
