@@ -7,11 +7,11 @@ import domain.exceptions.*;
 
 import static org.junit.Assert.*;
 
-public class CircleTest {
+public class CirkelTest {
 
     private int geldigeStraal, geldigeStraal2;
     private Punt geldigMiddelpunt, geldigMiddelpunt2;
-    private Circle circle, circle2;
+    private Cirkel circle, circle2;
 
     @Before
     public void setUp() {
@@ -22,51 +22,51 @@ public class CircleTest {
     }
 
     @Test
-    public void circle_maakt_circleMetGeldigMiddelpuntenStraal() throws DomainException {
-        circle = new Circle(geldigMiddelpunt, geldigeStraal);
+    public void circle_maakt_cirkelMetGeldigMiddelpuntenStraal() throws DomainException {
+        circle = new Cirkel(geldigMiddelpunt, geldigeStraal);
         assertEquals(geldigeStraal, circle.getRadius());
         assertEquals(geldigMiddelpunt, circle.getCenter());
     }
 
     @Test (expected = DomainException.class)
     public void circle_met_circleMetMiddelpuntNULL_geeft_Exception() throws DomainException {
-        circle = new Circle(null, geldigeStraal);
+        circle = new Cirkel(null, geldigeStraal);
     }
 
     @Test (expected = DomainException.class)
     public void circle_met_circleMetStraalKleinerDan0_geeft_Exception() throws DomainException {
-        circle = new Circle(geldigMiddelpunt, -3);
+        circle = new Cirkel(geldigMiddelpunt, -3);
     }
 
     @Test (expected = DomainException.class)
     public void circle_met_circleMetStraalGelijkAan0_geeft_Exception() throws DomainException {
-        circle = new Circle(geldigMiddelpunt, 0);
+        circle = new Cirkel(geldigMiddelpunt, 0);
     }
 
     @Test
     public void equals_met_2CirkelsZelfdeMiddelpuntEnStraal_is_True() throws DomainException {
-        circle = new Circle(geldigMiddelpunt, geldigeStraal);
-        circle2 = new Circle(geldigMiddelpunt, geldigeStraal);
+        circle = new Cirkel(geldigMiddelpunt, geldigeStraal);
+        circle2 = new Cirkel(geldigMiddelpunt, geldigeStraal);
         assertTrue(circle.equals(circle2));
     }
 
     @Test
     public void equals_met_2CirkelsWaarvanéénNULLis_is_False() throws DomainException {
-        circle = new Circle(geldigMiddelpunt, geldigeStraal);
+        circle = new Cirkel(geldigMiddelpunt, geldigeStraal);
         assertFalse(circle.equals(null));
     }
 
     @Test
     public void equals_met_2CirkelsZelfdeStraalVerschillendMiddelpunt_is_False() throws DomainException {
-        circle = new Circle(geldigMiddelpunt, geldigeStraal);
-        circle2 = new Circle(geldigMiddelpunt2, geldigeStraal);
+        circle = new Cirkel(geldigMiddelpunt, geldigeStraal);
+        circle2 = new Cirkel(geldigMiddelpunt2, geldigeStraal);
         assertFalse(circle.equals(circle2));
     }
 
     @Test
     public void equals_met_2CirkelsZelfdeMiddelpuntVerschillendStraal_is_False() throws DomainException {
-        circle = new Circle(geldigMiddelpunt, geldigeStraal);
-        circle2 = new Circle(geldigMiddelpunt, geldigeStraal2);
+        circle = new Cirkel(geldigMiddelpunt, geldigeStraal);
+        circle2 = new Cirkel(geldigMiddelpunt, geldigeStraal2);
         assertFalse(circle.equals(circle2));
     }
 }

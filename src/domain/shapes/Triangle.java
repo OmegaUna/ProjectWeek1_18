@@ -76,12 +76,12 @@ public class Triangle extends Shape {
     }
 
     @Override
-    public BoxAround boxAround() {
-        Point boxPos = new Point(min(min(this.getCorner1().getX(), this.getCorner2().getX()), this.getCorner3().getX()),
+    public Omhullende omhullende() throws DomainException {
+        Punt boxPos = new Punt(min(min(this.getCorner1().getX(), this.getCorner2().getX()), this.getCorner3().getX()),
                 min(min(this.getCorner1().getY(), this.getCorner2().getY()), this.getCorner3().getY()));
         int width = max(max(this.getCorner1().getX(), this.getCorner2().getX()), this.getCorner3().getX()) - boxPos.getX();
         int height = max(max(this.getCorner1().getY(), this.getCorner2().getY()), this.getCorner3().getY()) - boxPos.getY();
-        return new BoxAround(boxPos, width, height);
+        return new Omhullende(boxPos, width, height);
     }
 
     @Override
