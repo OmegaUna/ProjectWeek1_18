@@ -1,4 +1,6 @@
-package domain.Game;
+package domain.game;
+
+import domain.game.Speler;
 
 import java.util.ArrayList;
 

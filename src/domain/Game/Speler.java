@@ -1,4 +1,4 @@
-package domain.Game;
+package domain.game;
 
 import static java.lang.Integer.max;
 import static java.lang.Integer.sum;
