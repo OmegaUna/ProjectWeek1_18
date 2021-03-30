@@ -2,8 +2,8 @@ package ui.scenes;
 
 import domain.exceptions.DomainException;
 import javafx.fxml.FXMLLoader;
-import domain.Game.Game;
-import domain.Game.Speler;
+import domain.game.Game;
+import domain.game.Speler;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
