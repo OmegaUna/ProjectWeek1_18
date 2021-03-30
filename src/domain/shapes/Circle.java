@@ -1,14 +1,15 @@
 package domain.shapes;
+import domain.exceptions.*;
 
 import domain.exceptions.DomainException;
 
 import javax.swing.*;
 
 public class Circle extends Shape{
-    private Point center;
+    private Punt center;
     private int radius;
 
-    public Circle(Point center, int radius) throws DomainException {
+    public Circle(Punt center, int radius) throws DomainException {
         if (radius <= 0) {
             throw new DomainException("radius too small (Has to be at least 0)");
         } else if (center == null) {
@@ -19,11 +20,11 @@ public class Circle extends Shape{
         }
     }
 
-    public Point getCenter() {
+    public Punt getCenter() {
         return center;
     }
 
-    private void setCenter(Point center) {
+    private void setCenter(Punt center) {
         this.center = center;
     }
 
@@ -36,6 +37,7 @@ public class Circle extends Shape{
     }
 
     public boolean equals(Circle circle) {
+        if(circle == null) return false;
         return this.radius == circle.getRadius() && this.center == circle.getCenter();
     }
 

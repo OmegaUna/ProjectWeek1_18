@@ -1,18 +1,18 @@
-package domain.game;
+package domain.Game;
 
 import java.util.ArrayList;
 
 public class Game {
 
     private String word;
-    private Player player;
+    private Speler speler;
     private int maxGuesses;
     private int wrongGuesses;
     private ArrayList<String> guessedChars = new ArrayList();
 
-    public Game(String word, Player player, int maxGuesses) {
+    public Game(String word, Speler speler, int maxGuesses) {
         this.word = word.toLowerCase();
-        this.player = player;
+        this.speler = speler;
         this.maxGuesses = maxGuesses;
         this.wrongGuesses = 0;
     }
@@ -53,8 +53,8 @@ public class Game {
         this.wrongGuesses += 1;
     }
 
-    public Player getPlayer() {
-        return player;
+    public Speler getPlayer() {
+        return speler;
     }
 
     public int getMaxGuesses() {
