@@ -2,6 +2,8 @@ package domain.shapes;
 
 import domain.exceptions.DomainException;
 
+import javax.swing.*;
+
 public class Rectangle extends Shape {
 
     private final int width;
@@ -39,13 +41,8 @@ public class Rectangle extends Shape {
     }
 
     @Override
-    public String boxAround() {
-        return this.toString() + String.format("\nOmhullende: %s - %d - %d", this.getLUCorner().toString(), this.getWidth(), this.getHeight());
-    }
-
-    @Override
-    public void draw() {
-        ; //TODO
+    public BoxAround boxAround() {
+        return new BoxAround(this.getLUCorner(), this.getWidth(), this.getHeight());
     }
 
     @Override

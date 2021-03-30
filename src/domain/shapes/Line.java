@@ -2,6 +2,8 @@ package domain.shapes;
 
 import domain.exceptions.DomainException;
 
+import javax.swing.*;
+
 import static java.lang.Integer.max;
 import static java.lang.Integer.min;
 
@@ -41,16 +43,11 @@ public class Line extends Shape {
     }
 
     @Override
-    public String boxAround() {
+    public BoxAround boxAround() {
         Point boxPos = new Point(min(this.getEnd().getX(), this.getEnd().getX()), min(this.getEnd().getY(), this.getEnd().getY()));
         int width = max(this.start.getX(), this.end.getX()) - boxPos.getX();
         int height = max(this.start.getY(), this.end.getY()) - boxPos.getY();
-        return this.toString() + String.format("\nOmhullende: %s - %d - %d", boxPos.toString(), width, height);
-    }
-
-    @Override
-    public void draw() {
-        ; //TODO
+        return new BoxAround(boxPos, width, height);
     }
 
     @Override

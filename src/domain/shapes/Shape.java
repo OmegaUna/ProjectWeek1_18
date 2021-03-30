@@ -1,9 +1,7 @@
 package domain.shapes;
 
 abstract class Shape {
-    public abstract String boxAround();
-
-    public abstract void draw();
+    public abstract BoxAround boxAround();
 
     public abstract String toString();
 }
