@@ -1,4 +1,4 @@
-package domain;
+package domain.shapes;
 
 import static org.junit.Assert.*;
 
