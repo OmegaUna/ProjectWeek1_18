@@ -5,23 +5,23 @@ import domain.exceptions.DomainException;
 import static java.lang.Integer.max;
 import static java.lang.Integer.min;
 
-public class Line extends Shape {
+public class LijnStuk extends Shape {
 
     Punt start;
     Punt end;
 
-    public Line(Punt start, Punt end) throws DomainException {
+    public LijnStuk(Punt start, Punt end) throws DomainException {
         if (start == end) {
             throw new DomainException("Start can't be the same as the end.");
         } else if (start == null || end == null) {
             throw new DomainException("Start and end can't be null.");
         } else {
-            this.start = start;
-            this.end = end;
+            setEndPunts(start,end);
         }
     }
 
-    private void setEndPunts(Punt start, Punt end) {
+    private void setEndPunts(Punt start, Punt end) throws DomainException {
+        if(start==null||end==null) throw new DomainException("Start of einde was null.");
         this.start = start;
         this.end = end;
     }
@@ -34,12 +34,13 @@ public class Line extends Shape {
         return this.end;
     }
 
-    public boolean equals(Line line) {
+    public boolean equals(LijnStuk line) {
+        if (line == null) return false;
         Punt oStart = line.getStart();
         Punt oEnd = line.getEnd();
-        return (this.getStart() == oStart && this.getEnd() == oEnd) || (this.getStart() == oEnd && this.getEnd() == oStart);
+        //return (this.getStart() == oStart && this.getEnd() == oEnd) || (this.getStart() == oEnd && this.getEnd() == oStart);
+        return this.getStart().equals(oStart) && this.getEnd().equals(oEnd);
     }
-
     @Override
     public String boxAround() {
         Punt boxPos = new Punt(min(this.getEnd().getX(), this.getEnd().getX()), min(this.getEnd().getY(), this.getEnd().getY()));
