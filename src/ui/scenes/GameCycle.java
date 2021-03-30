@@ -1,8 +1,9 @@
 package ui.scenes;
 
+import domain.exceptions.DomainException;
 import javafx.fxml.FXMLLoader;
-import domain.game.Game;
-import domain.game.Player;
+import domain.Game.Game;
+import domain.Game.Speler;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -22,13 +23,13 @@ public class GameCycle {
     private Text gameToPlayerText = new Text("");
     private Text guessedCharsText = new Text("");
 
-    public GameCycle(Stage parentScene) {
+    public GameCycle(Stage parentScene) throws DomainException {
         //this.loader = loader;
         this.parentScene = parentScene;
         this.parentScene.setTitle("Hangman | The Game");
 
-        Player player = new Player("Speler1");
-        this.game = new Game("polymorphism", player, MAXGUESSES);
+        Speler speler = new Speler("Speler1");
+        this.game = new Game("polymorphism", speler, MAXGUESSES);
         this.startCycle(this.game, this.parentScene, inputHintText);
     }
     public void startCycle(Game game, Stage parentScene, Text inputHintText) {

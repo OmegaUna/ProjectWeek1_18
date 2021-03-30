@@ -1,5 +1,6 @@
 package ui.scenes;
 
+import domain.exceptions.DomainException;
 import javafx.application.Application;
 
 import javafx.stage.Stage;
@@ -47,7 +48,12 @@ public class Menu {
         btn_go_game.setText("Hangman spelen");
         btn_go_game.setOnAction(event -> {
             System.out.println("User went to game scene.");
-            GameCycle gameCycle = new GameCycle(this.parentScene);
+            GameCycle gameCycle = null;
+            try {
+                gameCycle = new GameCycle(this.parentScene);
+            } catch (DomainException e) {
+                e.getMessage();
+            }
             //GameCycle gameCycle = new GameCycle(this.parentScene, this.loader);
             gameCycle.showScene();
         });
