@@ -1,5 +1,6 @@
 package ui.scenes;
 
+import domain.game.HintWoord;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
@@ -7,13 +8,15 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class ResultScreen{
+
     private final String resultText;
     private Stage parentScene;
     private Scene scene;
-    public ResultScreen(Stage parentScene, boolean gameResult) {
+
+    public ResultScreen(Stage parentScene, boolean gameResult, String woord) {
         this.parentScene = parentScene;
         this.parentScene.setTitle("Hangman | Result");
-        this.resultText = (gameResult) ? "Hey! You won the game you smart-ass!" : "You lost the game.. Sorry!";
+        this.resultText = String.format("Het woord was %s. ", woord).concat((gameResult) ? "You won the game you smart-ass!" : "You lost the game.. Sorry!");
         start();
     }
 
