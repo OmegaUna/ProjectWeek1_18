@@ -43,6 +43,7 @@ public class HintWoord {
 
     public String getWoord() {
         String woord = "";
+
         //for (HintLetter letter : this.getHintWoord()) woord = woord.concat(letter.toString());
         HintLetter[] lijst = this.getHintWoord();
         for (int i = 0; i < this.getHintWoord().length; i++) {
