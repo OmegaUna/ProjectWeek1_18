@@ -1,6 +1,7 @@
 package ui.scenes;
 
 import domain.exceptions.DomainException;
+import domain.game.HintWoord;
 import javafx.fxml.FXMLLoader;
 import domain.game.Game;
 import domain.game.Speler;
@@ -15,13 +16,12 @@ import javafx.stage.Stage;
 
 public class GameCycle {
     private FXMLLoader loader;
-    private Game game;
+    private HintWoord hintWoord;
     private Scene scene;
     private final Stage parentScene;
     private int MAXGUESSES = 14;
     private Text inputHintText = new Text("");
     private Text gameToPlayerText = new Text("");
-    private Text guessedCharsText = new Text("");
 
     public GameCycle(Stage parentScene) throws DomainException {
         //this.loader = loader;
@@ -29,10 +29,11 @@ public class GameCycle {
         this.parentScene.setTitle("Hangman | The Game");
 
         Speler speler = new Speler("Speler1");
-        this.game = new Game("polymorphism", speler, MAXGUESSES);
-        this.startCycle(this.game, this.parentScene, inputHintText);
+        this.hintWoord = new HintWoord("polymorphism");
+        this.startCycle(this.hintWoord, this.parentScene, inputHintText);
     }
-    public void startCycle(Game game, Stage parentScene, Text inputHintText) {
+
+    public void startCycle(HintWoord hintWoord, Stage parentScene, Text inputHintText) {
         boolean epicGamerMoment = true;
 
         VBox pane = new VBox();
@@ -74,49 +75,52 @@ public class GameCycle {
         pane.getChildren().add(submit_btn);
         pane.getChildren().add(stop_game_btn);
         pane.getChildren().add(gameToPlayerText);
-        pane.getChildren().add(guessedCharsText);
-        this.scene = new Scene(pane, 640,480);
+        this.scene = new Scene(pane, 640, 480);
     }
-    public void uiExecuteGuess(String guess, Stage parentScene) {
-        System.out.println("Player guesses on: " + guess);
 
-        if ( game.isValidGuess(guess) ) {
-            if (!game.guess(guess)) {
-                game.addWrongGuess();
-                inputHintText.setText("You guessed wrong LOL, " + (game.getMaxGuesses() - game.getWrongGuesses()) + " guesses left.");
-            } else {
-                inputHintText.setText("You guessed right!");
-            }
-        } else {
-            inputHintText.setText("Your guess is not valid or has already been guessed, please try again.");
-        }
+    public void uiExecuteGuess(String guess, Stage parentScene) {
+        System.out.println("Player guesses: " + guess);
+        char charGuess = guess.length() == 1 ? guess.toCharArray()[0] : '*';
+        hintWoord.raad(charGuess);
+
+//        if (game.isValidGuess(guess)) {
+//            if (!hintWoord.guess(guess)) {
+//                inputHintText.setText("You guessed wrong LOL, " + (hintWoord.getMaxGuesses() - hintWoord.getWrongGuesses()) + " guesses left.");
+//            } else {
+//                inputHintText.setText("You guessed right!");
+//            }
+//        } else {
+//            inputHintText.setText("Your guess is not valid or has already been guessed, please try again.");
+//        }
         addWordToScreen();
-        addGuessedCharsToScreen();
-        if ( game.lost() ) {
+//        addGuessedCharsToScreen();
+//        if (game.lost()) {
+//            // parentScene is empty
+//            System.out.println("User lost the game!");
+//            ResultScreen resultScreen = new ResultScreen(parentScene, false);
+//            resultScreen.showScene();
+
+        if (hintWoord.isGeraden()) {
             // parentScene is empty
-            System.out.println("User lost the game!");
-            ResultScreen resultScreen = new ResultScreen(parentScene, false);
-            resultScreen.showScene();
-        } else if ( game.complete() ) {
-            // parentScene is empty
-            System.out.println("User won the game!");
+            System.out.println("You won the game!");
             ResultScreen resultScreen = new ResultScreen(parentScene, true);
             resultScreen.showScene();
         }
     }
-    public void addWordToScreen() {
-        System.out.println(game.getWordState("_"));
-        this.gameToPlayerText.setText(game.getWordState("_"));
-    }
-    public void addGuessedCharsToScreen() {
-        System.out.println(game.getGuessedChars());
-        StringBuilder guessedChars = new StringBuilder();
-        for (String guessedChar : game.getGuessedChars()) {
-            guessedChars.append(guessedChar).append(", ");
-        }
-        this.guessedCharsText.setText("Gegokte letters: " + guessedChars.toString());
 
+    public void addWordToScreen() {
+        System.out.println(hintWoord.toString());
+        this.gameToPlayerText.setText(hintWoord.toString());
     }
+
+    //    public void addGuessedCharsToScreen() {
+//        System.out.println(game.getGuessedChars());
+//        StringBuilder guessedChars = new StringBuilder();
+//        for (String guessedChar : game.getGuessedChars()) {
+//            guessedChars.append(guessedChar).append(", ");
+//        }
+//
+//    }
     public void showScene() {
         this.parentScene.setScene(this.scene);
         this.parentScene.show();
