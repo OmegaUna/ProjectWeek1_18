@@ -1,4 +1,4 @@
-package domain;
+package ui;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -17,11 +17,13 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
+        /*FXMLLoader root = new FXMLLoader();
+        root.setLocation(getClass().getResource("ui.fxml"));*/
         Parent root = FXMLLoader.load(getClass().getResource("ui.fxml"));
 
         // window placeholder voor als er niks load
         Scene mainScene = new Scene(root, 640,480);
-        mainScene.getStylesheets().add("master.css");
+        //mainScene.getStylesheets().add("master.css");
         primaryStage.setTitle("Hangman");
         primaryStage.setScene(mainScene);
         primaryStage.show();
