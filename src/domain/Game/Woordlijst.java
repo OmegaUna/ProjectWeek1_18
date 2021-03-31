@@ -1,4 +1,4 @@
-package domain.Game;
+package domain.game;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Woordlijst {
+
+    private static File WORDS = new File("hangmanZeerSpicy.txt");
     private final ArrayList<String> woordenLijst;
     public Woordlijst() {
         this.woordenLijst = new ArrayList<>();
@@ -15,13 +17,12 @@ public class Woordlijst {
         // add String or add from woordenlijst
 
         // add from woordenlijst
-        if ( this.woordenLijst.contains(s) ) {
+        if (this.woordenLijst.contains(s)) {
             throw new IOException();
         } else {
             // zoek s
-            File file = new File("woordenlijst.txt");
-            Scanner reader = new Scanner(file);
-            if (file.exists()) {
+            Scanner reader = new Scanner(WORDS);
+            if (WORDS.exists()) {
                 while(reader.hasNextLine()) {
                     String data = reader.nextLine();
                     woordenLijst.add(data);
