@@ -1,5 +1,7 @@
 package domain.game;
 
+import domain.exceptions.DomainException;
+
 import java.util.ArrayList;
 
 public class HintWoord {
@@ -7,7 +9,8 @@ public class HintWoord {
     private HintLetter[] hintWoord;
     private ArrayList<Character> guessedChars = new ArrayList();
 
-    public HintWoord(String woord) {
+    public HintWoord(String woord) throws DomainException {
+        if(woord==null||woord.trim().isEmpty()) throw new DomainException("Woord was null of leeg");
         this.hintWoord = stringToHintLetterArray(woord);
     }
 
@@ -23,7 +26,7 @@ public class HintWoord {
     public boolean raad(char letter) {
         if (!getGuessedChars().contains(letter)) {
             for (HintLetter hl : this.getHintWoord()) {
-                hl.raad(letter);
+                hl.raad(Character.toLowerCase(letter));
             }
             addGuessedChar(letter);
         } else return false;
@@ -31,7 +34,7 @@ public class HintWoord {
     }
 
     private boolean isInWoord(char letter) {
-        return this.getWoord().contains(String.valueOf(letter));
+        return this.getWoord().contains(String.valueOf(Character.toLowerCase(letter)));
     }
 
     public boolean isGeraden() {
@@ -40,7 +43,11 @@ public class HintWoord {
 
     public String getWoord() {
         String woord = "";
-        for (HintLetter letter : hintWoord) woord = woord.concat(letter.toString());
+        //for (HintLetter letter : this.getHintWoord()) woord = woord.concat(letter.toString());
+        HintLetter[] lijst = this.getHintWoord();
+        for (int i = 0; i < this.getHintWoord().length; i++) {
+            woord=woord.concat(Character.toString(lijst[i].getLetter()));
+        }
         return woord;
     }
 
@@ -53,13 +60,17 @@ public class HintWoord {
     }
 
     public void addGuessedChar(Character character) {
-        this.guessedChars.add(character);
+        this.guessedChars.add(Character.toLowerCase(character));
     }
 
     public String toString() {
         String str = "";
-        for (HintLetter hl : this.getHintWoord()) {
+        HintLetter[] lijst = this.getHintWoord();
+        for (int i=0; i<getHintWoord().length;i++){ //HintLetter hl : this.getHintWoord()) {
+            HintLetter hl = lijst[i];
             str = str.concat(Character.toString(hl.toChar()));
+            if(i== lijst.length-1) return str;
+            if(hl.getLetter()!=' ') str = str.concat(" ");
         }
         return str;
     }
