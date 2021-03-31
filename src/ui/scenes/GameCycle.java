@@ -2,6 +2,7 @@ package ui.scenes;
 
 import domain.exceptions.DomainException;
 import domain.game.HintWoord;
+import domain.game.Woordlijst;
 import javafx.fxml.FXMLLoader;
 import domain.game.Game;
 import domain.game.Speler;
@@ -29,7 +30,7 @@ public class GameCycle {
         this.parentScene.setTitle("Hangman | The Game");
 
         Speler speler = new Speler("Speler1");
-        this.hintWoord = new HintWoord("polymorphism");
+        this.hintWoord = new HintWoord(Woordlijst.getRandomWord());
         this.startCycle(this.hintWoord, this.parentScene, inputHintText);
     }
 
@@ -103,7 +104,7 @@ public class GameCycle {
         if (hintWoord.isGeraden()) {
             // parentScene is empty
             System.out.println("You won the game!");
-            ResultScreen resultScreen = new ResultScreen(parentScene, true);
+            ResultScreen resultScreen = new ResultScreen(parentScene, true, hintWoord.getWoord());
             resultScreen.showScene();
         }
     }
