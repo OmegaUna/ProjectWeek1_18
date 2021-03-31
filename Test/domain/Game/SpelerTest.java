@@ -1,7 +1,6 @@
-package domain.Game;
+package domain.game;
 import static org.junit.Assert.*;
 
-import domain.game.Speler;
 import org.junit.Before;
 import org.junit.Test;
 import domain.exceptions.*;

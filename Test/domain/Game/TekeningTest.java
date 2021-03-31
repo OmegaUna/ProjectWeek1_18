@@ -1,4 +1,4 @@
-package domain;
+package domain.game;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
