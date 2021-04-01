@@ -26,6 +26,7 @@ public class GameCycle {
     private Text inputHintText = new Text("");
     private Text gameToPlayerText = new Text("");
     private Map<String, String> gameState;
+    private int guesses = 0;
 
     public GameCycle(Stage parentScene, Map<String, String> gameState) throws DomainException {
         this.parentScene = parentScene;
@@ -34,6 +35,7 @@ public class GameCycle {
         this.parentScene.setTitle("Hey, " + gameState.get("playerName") + "!");
         this.hintWoord = new HintWoord(Woordlijst.getRandomWord());
         this.startCycle(this.hintWoord, this.parentScene, inputHintText);
+        this.guesses = 0;
     }
 
     public void startCycle(HintWoord hintWoord, Stage parentScene, Text inputHintText) {
@@ -73,6 +75,8 @@ public class GameCycle {
         pane.getChildren().add(stop_game_btn);
         pane.getChildren().add(gameToPlayerText);
         this.scene = new Scene(pane, 640, 480);
+
+        this.gameToPlayerText.setText(hintWoord.toString());
     }
 
     public void uiExecuteGuess(String guess, Stage parentScene) {
@@ -80,7 +84,8 @@ public class GameCycle {
         char charGuess = guess.length() == 1 ? guess.toCharArray()[0] : '*';
 
         if (!hintWoord.raad(charGuess)) {
-            inputHintText.setText("You guessed wrong LOL, idfk how much guesses left, because someone fucked up the domain classes.");
+            this.guesses++;
+            inputHintText.setText(String.format("You guessed wrong LOL XD %d guesses left.", hintWoord.MAXGUESSES - this.guesses));
         } else {
             inputHintText.setText("You guessed right!");
         }
@@ -92,11 +97,11 @@ public class GameCycle {
             ResultScreen resultScreen = new ResultScreen(parentScene, true, hintWoord.getWoord(), this.gameState);
             resultScreen.showScene();
         }
-//        if (hintWoord.lost()) {
-//            System.out.println("You lost the game!");
-//            ResultScreen resultScreen = new ResultScreen(parentScene, false, hintWoord.getWoord(), this.gameState);
-//            resultScreen.showScene();
-//        }
+        if (this.guesses == hintWoord.MAXGUESSES) {
+            System.out.println("You lost the game!");
+            ResultScreen resultScreen = new ResultScreen(parentScene, false, hintWoord.getWoord(), this.gameState);
+            resultScreen.showScene();
+        }
     }
 
     public void addWordToScreen() {
@@ -104,14 +109,6 @@ public class GameCycle {
         this.gameToPlayerText.setText(hintWoord.toString());
     }
 
-    //    public void addGuessedCharsToScreen() {
-//        System.out.println(game.getGuessedChars());
-//        StringBuilder guessedChars = new StringBuilder();
-//        for (String guessedChar : game.getGuessedChars()) {
-//            guessedChars.append(guessedChar).append(", ");
-//        }
-//
-//    }
     public void showScene() {
         this.parentScene.setScene(this.scene);
         this.parentScene.show();

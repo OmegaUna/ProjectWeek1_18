@@ -39,7 +39,7 @@ public class Cirkel extends Vorm {
     }
 
     @Override
-    public Omhullende omhullende() throws DomainException {
+    public Omhullende getOmhullende() throws DomainException {
         Punt boxPos = new Punt(this.getCenter().getX() - this.getRadius(), this.getCenter().getY() - this.getRadius());
         int width = this.getRadius() * 2;
         int height = this.getRadius() * 2;

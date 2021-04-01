@@ -42,7 +42,7 @@ public class LijnStuk extends Vorm {
         return this.getStart().equals(oStart) && this.getEnd().equals(oEnd);
     }
     @Override
-    public Omhullende omhullende() throws DomainException {
+    public Omhullende getOmhullende() throws DomainException {
         Punt boxPos = new Punt(min(this.getEnd().getX(), this.getEnd().getX()), min(this.getEnd().getY(), this.getEnd().getY()));
         int width = max(this.start.getX(), this.end.getX()) - boxPos.getX();
         int height = max(this.start.getY(), this.end.getY()) - boxPos.getY();

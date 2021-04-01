@@ -77,7 +77,7 @@ public class Driehoek extends Vorm {
     }
 
     @Override
-    public Omhullende omhullende() throws DomainException {
+    public Omhullende getOmhullende() throws DomainException {
         Punt boxPos = new Punt(min(min(this.getHoekPunt1().getX(), this.getHoekPunt2().getX()), this.getHoekPunt3().getX()),
                 min(min(this.getHoekPunt1().getY(), this.getHoekPunt2().getY()), this.getHoekPunt3().getY()));
         int width = max(max(this.getHoekPunt1().getX(), this.getHoekPunt2().getX()), this.getHoekPunt3().getX()) - boxPos.getX();
