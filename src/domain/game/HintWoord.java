@@ -8,6 +8,7 @@ public class HintWoord {
 
     private HintLetter[] hintWoord;
     private ArrayList<Character> guessedChars = new ArrayList();
+    public final int MAXGUESSES = 14;
 
     public HintWoord(String woord) throws DomainException {
         if(woord==null||woord.trim().isEmpty()) throw new DomainException("Woord was null of leeg");
@@ -43,8 +44,6 @@ public class HintWoord {
 
     public String getWoord() {
         String woord = "";
-
-        //for (HintLetter letter : this.getHintWoord()) woord = woord.concat(letter.toString());
         HintLetter[] lijst = this.getHintWoord();
         for (int i = 0; i < this.getHintWoord().length; i++) {
             woord=woord.concat(Character.toString(lijst[i].getLetter()));
@@ -67,11 +66,11 @@ public class HintWoord {
     public String toString() {
         String str = "";
         HintLetter[] lijst = this.getHintWoord();
-        for (int i=0; i<getHintWoord().length;i++){ //HintLetter hl : this.getHintWoord()) {
+        for (int i = 0; i < getHintWoord().length; i++) {
             HintLetter hl = lijst[i];
             str = str.concat(Character.toString(hl.toChar()));
-            if(i== lijst.length-1) return str;
-            if(hl.getLetter()!=' ') str = str.concat(" ");
+            if (i == lijst.length - 1) return str;
+            if (hl.getLetter() != ' ') str = str.concat(" ");
         }
         return str;
     }

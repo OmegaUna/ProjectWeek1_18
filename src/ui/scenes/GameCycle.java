@@ -26,6 +26,7 @@ public class GameCycle {
     private Text inputHintText = new Text("");
     private Text gameToPlayerText = new Text("");
     private Map<String, String> gameState;
+    private int guesses = 0;
 
     public GameCycle(Stage parentScene, Map<String, String> gameState) throws DomainException {
         this.parentScene = parentScene;
@@ -34,6 +35,7 @@ public class GameCycle {
         this.parentScene.setTitle("Hey, " + gameState.get("playerName") + "!");
         this.hintWoord = new HintWoord(Woordlijst.getRandomWord());
         this.startCycle(this.hintWoord, this.parentScene, inputHintText);
+        this.guesses = 0;
     }
 
     public void startCycle(HintWoord hintWoord, Stage parentScene, Text inputHintText) {
@@ -80,7 +82,8 @@ public class GameCycle {
         char charGuess = guess.length() == 1 ? guess.toCharArray()[0] : '*';
 
         if (!hintWoord.raad(charGuess)) {
-            inputHintText.setText("You guessed wrong LOL, idfk how much guesses left, because someone fucked up the domain classes.");
+            this.guesses += 1;
+            inputHintText.setText("You guessed wrong LOL XD %d guesses left.");
         } else {
             inputHintText.setText("You guessed right!");
         }
@@ -92,11 +95,11 @@ public class GameCycle {
             ResultScreen resultScreen = new ResultScreen(parentScene, true, hintWoord.getWoord(), this.gameState);
             resultScreen.showScene();
         }
-//        if (hintWoord.lost()) {
-//            System.out.println("You lost the game!");
-//            ResultScreen resultScreen = new ResultScreen(parentScene, false, hintWoord.getWoord(), this.gameState);
-//            resultScreen.showScene();
-//        }
+        if (this.guesses == hintWoord.MAXGUESSES) {
+            System.out.println("You lost the game!");
+            ResultScreen resultScreen = new ResultScreen(parentScene, false, hintWoord.getWoord(), this.gameState);
+            resultScreen.showScene();
+        }
     }
 
     public void addWordToScreen() {

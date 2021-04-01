@@ -60,7 +60,7 @@ public class Menu {
             try {
                 gameCycle = new GameCycle(this.parentScene, this.gameState);
             } catch (DomainException e) {
-                e.getMessage();
+                System.out.println(e.getMessage());
             }
             //GameCycle gameCycle = new GameCycle(this.parentScene, this.loader);
             assert gameCycle != null;
@@ -80,7 +80,7 @@ public class Menu {
             try {
                 gameCycle = new GameCycle(this.parentScene, this.gameState);
             } catch (DomainException e) {
-                e.getMessage();
+                System.out.println(e.getMessage());
             }
             //GameCycle gameCycle = new GameCycle(this.parentScene, this.loader);
             assert gameCycle != null;
