@@ -21,7 +21,7 @@ public class ResultScreen{
         this.gameState = gameState;
         this.parentScene.setTitle("Hangman | Result");
         this.parentScene.setTitle("Hey, " + gameState.get("playerName") + "!");
-        this.resultText = String.format("Het woord was %s. ", woord).concat((gameResult) ? "You won the game you smart-ass!" : "You lost the game.. Sorry!");
+        this.resultText = String.format("Congrats %s, ", this.gameState.get("playerName")) + String.format("het woord was %s. ", woord).concat((gameResult) ? "You won the game you smart-ass!" : "You lost the game.. Sorry!");
         start();
     }
 
