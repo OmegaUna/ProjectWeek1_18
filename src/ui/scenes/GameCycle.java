@@ -4,7 +4,6 @@ import domain.exceptions.DomainException;
 import domain.game.HintWoord;
 import domain.game.Woordlijst;
 import javafx.fxml.FXMLLoader;
-import domain.game.Game;
 import domain.game.Speler;
 
 import javafx.scene.Scene;
