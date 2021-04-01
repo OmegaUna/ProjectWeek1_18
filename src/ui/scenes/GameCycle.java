@@ -14,6 +14,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.util.Map;
+
 public class GameCycle {
     private FXMLLoader loader;
     private HintWoord hintWoord;
@@ -22,13 +24,15 @@ public class GameCycle {
     private int MAXGUESSES = 14;
     private Text inputHintText = new Text("");
     private Text gameToPlayerText = new Text("");
+    private Map<String, String> gameState;
 
-    public GameCycle(Stage parentScene) throws DomainException {
+    public GameCycle(Stage parentScene, Map<String, String> gameState) throws DomainException {
         //this.loader = loader;
         this.parentScene = parentScene;
+        this.gameState = gameState;
         this.parentScene.setTitle("Hangman | The Game");
+        this.parentScene.setTitle("Hey, " + gameState.get("playerName") + "!");
 
-        Speler speler = new Speler("Speler1");
         this.hintWoord = new HintWoord(Woordlijst.getRandomWord());
         this.startCycle(this.hintWoord, this.parentScene, inputHintText);
     }
@@ -65,7 +69,7 @@ public class GameCycle {
             menuScreen.showScene();
         });*/
         stop_game_btn.setOnAction(actionEvent -> {
-            Menu menuScreen = new Menu(parentScene);
+            Menu menuScreen = new Menu(parentScene, this.gameState);
             //Menu menuScreen = new Menu(parentScene, this.loader);
             menuScreen.showScene();
         });
@@ -81,17 +85,13 @@ public class GameCycle {
     public void uiExecuteGuess(String guess, Stage parentScene) {
         System.out.println("Player guesses: " + guess);
         char charGuess = guess.length() == 1 ? guess.toCharArray()[0] : '*';
-        hintWoord.raad(charGuess);
 
-//        if (game.isValidGuess(guess)) {
-//            if (!hintWoord.guess(guess)) {
-//                inputHintText.setText("You guessed wrong LOL, " + (hintWoord.getMaxGuesses() - hintWoord.getWrongGuesses()) + " guesses left.");
-//            } else {
-//                inputHintText.setText("You guessed right!");
-//            }
-//        } else {
-//            inputHintText.setText("Your guess is not valid or has already been guessed, please try again.");
-//        }
+        if (!hintWoord.raad(charGuess)) {
+            inputHintText.setText("You guessed wrong LOL, idfk how much guesses left, because someone fucked up the domain classes.");
+        } else {
+            inputHintText.setText("You guessed right!");
+        }
+        //inputHintText.setText("Your guess is not valid or has already been guessed, please try again.");
         addWordToScreen();
 //        addGuessedCharsToScreen();
 //        if (game.lost()) {
@@ -103,7 +103,12 @@ public class GameCycle {
         if (hintWoord.isGeraden()) {
             // parentScene is empty
             System.out.println("You won the game!");
-            ResultScreen resultScreen = new ResultScreen(parentScene, true, hintWoord.getWoord());
+            ResultScreen resultScreen = new ResultScreen(parentScene, true, hintWoord.getWoord(), this.gameState);
+            resultScreen.showScene();
+        }
+        if (hintWoord.lost()) {
+            System.out.println("You lost the game!");
+            ResultScreen resultScreen = new ResultScreen(parentScene, false, hintWoord.getWoord(), this.gameState);
             resultScreen.showScene();
         }
     }
