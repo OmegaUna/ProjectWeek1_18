@@ -1,7 +1,6 @@
 package domain.game;
 
 import domain.exceptions.DomainException;
-import domain.shapes.Omhullende;
 import domain.shapes.Vorm;
 
 import java.util.ArrayList;
@@ -34,6 +33,10 @@ public class Tekening {
         return this.vormen.get(index);
     }
 
+    public ArrayList<Vorm> getVormen() {
+        return this.vormen;
+    }
+
     public void voegToe(Vorm vorm) throws DomainException {
         if (this.pastVorm(vorm)) {
             this.vormen.add(vorm);
@@ -42,16 +45,22 @@ public class Tekening {
         }
     }
 
+    public void voegMeerdereToe(Vorm[] vormen) throws DomainException {
+        for (Vorm vorm : vormen) {
+            this.voegToe(vorm);
+        }
+    }
+
     private boolean pastVorm(Vorm vorm) throws DomainException {
-        return !(vorm.omhullende().getMinX() < this.MIN_X || vorm.omhullende().getMinY() < this.MIN_Y ||
-                vorm.omhullende().getMaxX() > this.MAX_X || vorm.omhullende().getMaxY() > this.MAX_Y);
+        return !(vorm.getOmhullende().getMinX() < this.MIN_X || vorm.getOmhullende().getMinY() < this.MIN_Y ||
+                vorm.getOmhullende().getMaxX() > this.MAX_X || vorm.getOmhullende().getMaxY() > this.MAX_Y);
     }
 
     public boolean bevat(Vorm vorm) {
         return this.vormen.contains(vorm);
     }
 
-    public void verwijder(Vorm vorm) {
+    public void verwijder(Vorm vorm) throws DomainException {
         this.vormen.remove(vorm);
     }
 

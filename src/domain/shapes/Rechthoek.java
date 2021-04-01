@@ -40,7 +40,7 @@ public class Rechthoek extends Vorm {
     }
 
     @Override
-    public Omhullende omhullende() throws DomainException {
+    public Omhullende getOmhullende() throws DomainException {
         return new Omhullende(this.lUCorner, width, height);
     }
 

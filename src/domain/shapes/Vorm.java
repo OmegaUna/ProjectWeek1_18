@@ -7,6 +7,7 @@ import java.awt.*;
 public abstract class Vorm {
 
     private Color kleur;
+    private boolean isZichtbaar;
 
     public Color getKleur() {
         return this.kleur;
@@ -16,7 +17,15 @@ public abstract class Vorm {
         this.kleur = kleur;
     }
 
-    public abstract Omhullende omhullende() throws DomainException;
+    public boolean isZichtbaar() {
+        return this.isZichtbaar;
+    }
+
+    public void setZichtbaar(boolean bool) {
+        this.isZichtbaar = bool;
+    }
+
+    public abstract Omhullende getOmhullende() throws DomainException;
 
     public abstract String toString();
 }
