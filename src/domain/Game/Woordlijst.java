@@ -1,44 +1,48 @@
 package domain.game;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import domain.exceptions.DomainException;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Woordlijst {
 
-    private static final File WORDS = new File("hangmanZeerSpicy.txt");
-    private static final int WORDSLENGTH = 194445;
-    private final ArrayList<String> woordenLijst;
-
-    public Woordlijst() {
-        this.woordenLijst = new ArrayList<>();
-    }
+    private static final File WORDS = new File("rsc/hangmanZeerSpicy.txt");
 
     // nothing makes sense but okay!
-    public void voegToe(String s) throws IOException {
-        // add String or add from woordenlijst
-
-        // add from woordenlijst
-        if (this.woordenLijst.contains(s)) {
-            throw new IOException();
+    public static void voegToe(String s) throws DomainException {
+        if (inWordList(s)) {
+            throw new DomainException();
         } else {
-            // zoek s
-            Scanner reader = new Scanner(WORDS);
-            if (WORDS.exists()) {
-                while (reader.hasNextLine()) {
-                    String data = reader.nextLine();
-                    woordenLijst.add(data);
-                }
+            try {
+                FileWriter myWriter = new FileWriter("rsc/hangmanZeerSpicy.txt");
+                myWriter.write(s);
+                myWriter.close();
+            } catch (IOException e) {
+                throw new DomainException(e.getMessage());
             }
         }
     }
 
+    private static boolean inWordList(String word) {
+        BufferedReader reader;
+        try {
+            reader = new BufferedReader(new FileReader("rsc/hangmanZeerSpicy.txt"));
+            for (int lineNr = 0; lineNr <= getAantalWoorden(); lineNr++) {
+                String line = reader.readLine();
+                if (line.toString() == word) return true;
+            }
+        } catch (IOException e) {
+            return false;
+        }
+        return false;
+    }
+
+
     public static String getRandomWord() {
-        int randomNum = ThreadLocalRandom.current().nextInt(0, WORDSLENGTH);
+        int randomNum = ThreadLocalRandom.current().nextInt(0, getAantalWoorden());
         BufferedReader reader;
         String line = "dummy string in case of io exception";
         try {
@@ -54,7 +58,16 @@ public class Woordlijst {
         return line;
     }
 
-    public int getAantalWoorden() {
-        return this.woordenLijst.size();
+    public static int getAantalWoorden() {
+        int lines = 0;
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("rsc/hangmanZeerSpicy.txt"));
+            while (reader.readLine() != null) lines++;
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+        return lines;
     }
 }
