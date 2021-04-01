@@ -48,4 +48,9 @@ public class Rechthoek extends Vorm {
     public String toString() {
         return String.format("Rechthoek: linkerbovenhoek: %s - breedte: %d - hoogte: %d", this.getLUCorner().toString(), this.getWidth(), this.getHeight());
     }
+
+    @Override
+    public void teken() {
+
+    }
 }

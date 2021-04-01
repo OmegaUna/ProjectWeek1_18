@@ -4,7 +4,7 @@ import domain.exceptions.DomainException;
 
 import java.awt.*;
 
-public abstract class Vorm {
+public abstract class Vorm implements Drawable{
 
     private Color kleur;
     private boolean isZichtbaar;

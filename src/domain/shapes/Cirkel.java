@@ -50,4 +50,8 @@ public class Cirkel extends Vorm {
     public String toString() {
         return String.format("Cirkel: middelpunt: %s - straal: %d", this.getCenter().toString(), this.getRadius());
     }
+    @Override
+    public void teken() {
+
+    }
 }
