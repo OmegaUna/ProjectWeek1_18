@@ -96,12 +96,12 @@ public class GameCycle {
         if (this.hangMan.isGewonnen()) {
             // parentScene is empty
             System.out.println("You won the game!");
-            ResultScreen resultScreen = new ResultScreen(parentScene, true, this.hangMan.getHint(), this.gameState);
+            ResultScreen resultScreen = new ResultScreen(parentScene, true, this.hangMan.getWord(), this.gameState);
             resultScreen.showScene();
         }
         if (this.hangMan.isGameOver()) {
             System.out.println("You lost the game!");
-            ResultScreen resultScreen = new ResultScreen(parentScene, false, this.hangMan.getHint(), this.gameState);
+            ResultScreen resultScreen = new ResultScreen(parentScene, false, this.hangMan.getWord(), this.gameState);
             resultScreen.showScene();
         }
     }

@@ -1,6 +1,6 @@
 package domain.game;
 
-import domain.exceptions.DomainException;
+import domain.exceptions.DbException;
 
 import java.io.*;
 import java.util.concurrent.ThreadLocalRandom;
@@ -18,16 +18,16 @@ public class Woordenlijst {
     }
 
     // nothing makes sense but okay!
-    public void voegToe(String s) throws DomainException {
+    public void voegToe(String s) throws DbException {
         if (inWordList(s)) {
-            throw new DomainException();
+            throw new DbException();
         } else {
             try {
                 FileWriter myWriter = new FileWriter(PATH);
                 myWriter.write(s);
                 myWriter.close();
             } catch (IOException e) {
-                throw new DomainException(e.getMessage());
+                throw new DbException(e.getMessage());
             }
         }
     }

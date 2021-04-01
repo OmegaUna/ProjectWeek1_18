@@ -47,8 +47,10 @@ public class Tekening implements Drawable {
     }
 
     private boolean pastVorm(Vorm vorm) throws DomainException {
-        return !(vorm.getOmhullende().getMinX() < this.MIN_X || vorm.getOmhullende().getMinY() < this.MIN_Y ||
-                vorm.getOmhullende().getMaxX() > this.MAX_X || vorm.getOmhullende().getMaxY() > this.MAX_Y);
+        return (vorm.getOmhullende().getMinX() < this.MIN_X
+                || vorm.getOmhullende().getMinY() < this.MIN_Y
+                || vorm.getOmhullende().getMaxX() > this.MAX_X
+                || vorm.getOmhullende().getMaxY() > this.MAX_Y);
     }
 
     public boolean bevat(Vorm vorm) {

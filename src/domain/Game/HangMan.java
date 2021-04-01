@@ -25,6 +25,10 @@ public class HangMan {
         return this.speler;
     }
 
+    public String getWord() {
+        return this.hintWoord.getWoord();
+    }
+
     public TekeningHangMan getTekening() {
         return this.tekeningHangMan;
     }
