@@ -75,6 +75,8 @@ public class GameCycle {
         pane.getChildren().add(stop_game_btn);
         pane.getChildren().add(gameToPlayerText);
         this.scene = new Scene(pane, 640, 480);
+
+        this.gameToPlayerText.setText(hintWoord.toString());
     }
 
     public void uiExecuteGuess(String guess, Stage parentScene) {
@@ -82,8 +84,8 @@ public class GameCycle {
         char charGuess = guess.length() == 1 ? guess.toCharArray()[0] : '*';
 
         if (!hintWoord.raad(charGuess)) {
-            this.guesses += 1;
-            inputHintText.setText("You guessed wrong LOL XD %d guesses left.");
+            this.guesses++;
+            inputHintText.setText(String.format("You guessed wrong LOL XD %d guesses left.", hintWoord.MAXGUESSES - this.guesses));
         } else {
             inputHintText.setText("You guessed right!");
         }
@@ -107,14 +109,6 @@ public class GameCycle {
         this.gameToPlayerText.setText(hintWoord.toString());
     }
 
-    //    public void addGuessedCharsToScreen() {
-//        System.out.println(game.getGuessedChars());
-//        StringBuilder guessedChars = new StringBuilder();
-//        for (String guessedChar : game.getGuessedChars()) {
-//            guessedChars.append(guessedChar).append(", ");
-//        }
-//
-//    }
     public void showScene() {
         this.parentScene.setScene(this.scene);
         this.parentScene.show();
