@@ -1,7 +1,9 @@
 package ui.scenes;
 
 import domain.exceptions.DomainException;
+import domain.game.HangMan;
 import domain.game.HintWoord;
+import domain.game.Speler;
 import domain.game.Woordenlijst;
 import javafx.fxml.FXMLLoader;
 
@@ -27,13 +29,14 @@ public class GameCycle {
     private Text gameToPlayerText = new Text("");
     private Map<String, String> gameState;
     private int guesses = 0;
+    private HangMan hangMan;
 
     public GameCycle(Stage parentScene, Map<String, String> gameState) throws DomainException {
         this.parentScene = parentScene;
         this.gameState = gameState;
+        this.hangMan = new HangMan(new Speler(this.gameState.get("playerName")), new Woordenlijst());
         this.parentScene.setTitle("Hangman | The Game");
-        this.parentScene.setTitle("Hey, " + gameState.get("playerName") + "!");
-        this.hintWoord = new HintWoord(woordenlijst.getRandomWord());
+        this.parentScene.setTitle("Hey, " + this.gameState.get("playerName") + "!");
         this.startCycle(this.hintWoord, this.parentScene, inputHintText);
         this.guesses = 0;
     }
@@ -76,37 +79,36 @@ public class GameCycle {
         pane.getChildren().add(gameToPlayerText);
         this.scene = new Scene(pane, 640, 480);
 
-        this.gameToPlayerText.setText(hintWoord.toString());
+        this.gameToPlayerText.setText(hangMan.getHint());
     }
 
     public void uiExecuteGuess(String guess, Stage parentScene) {
         System.out.println("Player guesses: " + guess);
         char charGuess = guess.length() == 1 ? guess.toCharArray()[0] : '*';
 
-        if (!hintWoord.raad(charGuess)) {
-            this.guesses++;
-            inputHintText.setText(String.format("You guessed wrong LOL XD %d guesses left.", hintWoord.MAXGUESSES - this.guesses));
+        if (!this.hangMan.raad(charGuess)) {
+            inputHintText.setText(String.format("You guessed wrong LOL XD %d guesses left.", this.hangMan.MAXGUESSES - this.hangMan.getGuesses()));
         } else {
             inputHintText.setText("You guessed right!");
         }
         addWordToScreen();
 
-        if (hintWoord.isGeraden()) {
+        if (this.hangMan.isGewonnen()) {
             // parentScene is empty
             System.out.println("You won the game!");
-            ResultScreen resultScreen = new ResultScreen(parentScene, true, hintWoord.getWoord(), this.gameState);
+            ResultScreen resultScreen = new ResultScreen(parentScene, true, this.hangMan.getHint(), this.gameState);
             resultScreen.showScene();
         }
-        if (this.guesses == hintWoord.MAXGUESSES) {
+        if (this.hangMan.isGameOver()) {
             System.out.println("You lost the game!");
-            ResultScreen resultScreen = new ResultScreen(parentScene, false, hintWoord.getWoord(), this.gameState);
+            ResultScreen resultScreen = new ResultScreen(parentScene, false, this.hangMan.getHint(), this.gameState);
             resultScreen.showScene();
         }
     }
 
     public void addWordToScreen() {
-        System.out.println(hintWoord.toString());
-        this.gameToPlayerText.setText(hintWoord.toString());
+        System.out.println(hangMan.getHint());
+        this.gameToPlayerText.setText(hangMan.getHint());
     }
 
     public void showScene() {
