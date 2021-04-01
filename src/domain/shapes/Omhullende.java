@@ -54,4 +54,5 @@ public class Omhullende {
     public String toString() {
         return String.format("Omhullende: %s - %d - %d", this.getLUCorner(), this.getWidth(), this.getHeight());
     }
+
 }

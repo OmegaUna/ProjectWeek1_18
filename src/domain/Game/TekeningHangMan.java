@@ -3,7 +3,7 @@ package domain.game;
 import domain.exceptions.DomainException;
 import domain.shapes.*;
 
-public class TekeningHangMan extends Tekening {
+public class TekeningHangMan extends domain.game.Tekening {
 
     public TekeningHangMan(String naamTekening) throws DomainException {
         super(naamTekening);

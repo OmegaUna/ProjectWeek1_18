@@ -1,11 +1,12 @@
 package domain.game;
 
 import domain.exceptions.DomainException;
+import domain.shapes.Drawable;
 import domain.shapes.Vorm;
 
 import java.util.ArrayList;
 
-public class Tekening {
+public class Tekening implements Drawable {
     private String naam;
     private ArrayList<Vorm> vormen = new ArrayList<>();
     public int MIN_X;
@@ -87,5 +88,10 @@ public class Tekening {
                 ", MAX_X=" + MAX_X +
                 ", MAX_Y=" + MAX_Y +
                 '}';
+    }
+
+    @Override
+    public void teken() {
+
     }
 }
