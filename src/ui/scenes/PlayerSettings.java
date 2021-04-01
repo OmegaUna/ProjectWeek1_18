@@ -2,7 +2,7 @@ package ui.scenes;
 
 import domain.exceptions.DomainException;
 import javafx.application.Application;
-import domain.Game.Speler;
+import domain.game.Speler;
 import javafx.stage.Stage;
 
 import javafx.event.Event;
@@ -60,7 +60,7 @@ public class PlayerSettings {
                 errorLabel.setText("Je moet een gebruikersnaam invullen!");
             } else {
                 this.gameState.put("playerName", field.getText());
-                this.gameState.put("playerObj", new Speler(this.gameState.get("playerName")));
+                    this.gameState.put("playerObj", this.gameState.get("playerName"));
                 this.parentScene.setTitle("Hey, " + field.getText() + "!");
                 System.out.println("User " + field.getText() + " went to game scene.");
                 Menu menuScene = new Menu(this.parentScene, this.gameState);

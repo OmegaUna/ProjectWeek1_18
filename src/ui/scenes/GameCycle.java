@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import java.util.Map;
 
 public class GameCycle {
+
     private FXMLLoader loader;
     private HintWoord hintWoord;
     private Scene scene;
@@ -27,12 +28,10 @@ public class GameCycle {
     private Map<String, String> gameState;
 
     public GameCycle(Stage parentScene, Map<String, String> gameState) throws DomainException {
-        //this.loader = loader;
         this.parentScene = parentScene;
         this.gameState = gameState;
         this.parentScene.setTitle("Hangman | The Game");
         this.parentScene.setTitle("Hey, " + gameState.get("playerName") + "!");
-
         this.hintWoord = new HintWoord(Woordlijst.getRandomWord());
         this.startCycle(this.hintWoord, this.parentScene, inputHintText);
     }
@@ -62,12 +61,6 @@ public class GameCycle {
         Button stop_game_btn = new Button();
         stop_game_btn.getStyleClass().add("btn-danger");
         stop_game_btn.setText("Stop game");
-
-        /*MainScreenController mainScreenController = (MainScreenController) this.loader.getController();
-        mainScreenController.btnGo.setOnAction(actionEvent -> {
-            Menu menuScreen = new Menu(parentScene, this.loader);
-            menuScreen.showScene();
-        });*/
         stop_game_btn.setOnAction(actionEvent -> {
             Menu menuScreen = new Menu(parentScene, this.gameState);
             //Menu menuScreen = new Menu(parentScene, this.loader);
@@ -91,14 +84,7 @@ public class GameCycle {
         } else {
             inputHintText.setText("You guessed right!");
         }
-        //inputHintText.setText("Your guess is not valid or has already been guessed, please try again.");
         addWordToScreen();
-//        addGuessedCharsToScreen();
-//        if (game.lost()) {
-//            // parentScene is empty
-//            System.out.println("User lost the game!");
-//            ResultScreen resultScreen = new ResultScreen(parentScene, false);
-//            resultScreen.showScene();
 
         if (hintWoord.isGeraden()) {
             // parentScene is empty
@@ -106,11 +92,11 @@ public class GameCycle {
             ResultScreen resultScreen = new ResultScreen(parentScene, true, hintWoord.getWoord(), this.gameState);
             resultScreen.showScene();
         }
-        if (hintWoord.lost()) {
-            System.out.println("You lost the game!");
-            ResultScreen resultScreen = new ResultScreen(parentScene, false, hintWoord.getWoord(), this.gameState);
-            resultScreen.showScene();
-        }
+//        if (hintWoord.lost()) {
+//            System.out.println("You lost the game!");
+//            ResultScreen resultScreen = new ResultScreen(parentScene, false, hintWoord.getWoord(), this.gameState);
+//            resultScreen.showScene();
+//        }
     }
 
     public void addWordToScreen() {
