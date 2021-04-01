@@ -66,26 +66,7 @@ public class Menu {
             assert gameCycle != null;
             gameCycle.showScene();
         });
-
-        Button btn_go_settings = new Button();
-        btn_go_settings.setStyle("" +
-                "--fx-margin-bottom: 120px;-fx-padding: 5px;" +
-                "-fx-border-insets: 5px;-fx-background-insets: 5px;" +
-                "-fx-background-color: #39f;");
-        btn_go_settings.getStyleClass().add("btn-primary");
-        btn_go_settings.setText("Settings");
-        btn_go_settings.setOnAction(event -> {
-            System.out.println("User went to settings scene.");
-            GameCycle gameCycle = null;
-            try {
-                gameCycle = new GameCycle(this.parentScene, this.gameState);
-            } catch (DomainException e) {
-                System.out.println(e.getMessage());
-            }
-            //GameCycle gameCycle = new GameCycle(this.parentScene, this.loader);
-            assert gameCycle != null;
-            gameCycle.showScene();
-        });
+        
         Button btn_go_back = new Button();
         btn_go_back.setStyle("" +
                 "--fx-margin-bottom: 120px;-fx-padding: 5px;" +
@@ -100,7 +81,6 @@ public class Menu {
             playerSettings.showScene();
         });
         pane.getChildren().add(btn_go_back);
-        pane.getChildren().add(btn_go_settings);
         pane.getChildren().add(btn_go_game);
         this.scene = new Scene(pane, 640,480);
     }
