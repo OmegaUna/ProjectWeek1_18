@@ -81,7 +81,6 @@ public class Menu {
             playerSettings.showScene();
         });
         pane.getChildren().add(btn_go_back);
-        pane.getChildren().add(btn_go_settings);
         pane.getChildren().add(btn_go_game);
         this.scene = new Scene(pane, 640,480);
     }
