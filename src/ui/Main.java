@@ -6,8 +6,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import ui.scenes.Menu;
+import ui.scenes.PlayerSettings;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main extends Application {
 
@@ -28,9 +31,10 @@ public class Main extends Application {
         primaryStage.setScene(mainScene);
         primaryStage.show();
 
+        Map<String, String> gameState = new HashMap<>();
         /*FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("tabs.fxml"));*/
-        Menu menu = new Menu(primaryStage);
+        PlayerSettings menu = new PlayerSettings(primaryStage, gameState);
         menu.showScene();
 
     }
