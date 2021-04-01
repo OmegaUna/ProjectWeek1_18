@@ -27,7 +27,11 @@ public class TekeningHangMan extends Tekening {
         Vorm handRechts = new Cirkel(new Punt(330, 170), 5);
         Vorm[] vormenArray = {galgBodem, galgStaaf, hangbar, koord, hoofd, oogLinks, oogRechts, neus, mond, lijf,
                 beenLinks, beenRechts, voetLinks, voetRechts, armLinks, armRechts, handLinks, handRechts};
-        super.voegMeerdereToe(vormenArray);
+        try {
+            for (Vorm vorm : vormenArray) super.voegToe(vorm);
+        } catch (DomainException e) {
+            System.out.println("we kinda fucked up");
+        }
     }
 
     public int getAantalZichtbaar() {

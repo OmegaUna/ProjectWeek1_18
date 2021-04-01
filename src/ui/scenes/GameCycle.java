@@ -2,9 +2,8 @@ package ui.scenes;
 
 import domain.exceptions.DomainException;
 import domain.game.HintWoord;
-import domain.game.Woordlijst;
+import domain.game.Woordenlijst;
 import javafx.fxml.FXMLLoader;
-import domain.game.Speler;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -19,6 +18,7 @@ import java.util.Map;
 public class GameCycle {
 
     private FXMLLoader loader;
+    private Woordenlijst woordenlijst = new Woordenlijst();
     private HintWoord hintWoord;
     private Scene scene;
     private final Stage parentScene;
@@ -33,7 +33,7 @@ public class GameCycle {
         this.gameState = gameState;
         this.parentScene.setTitle("Hangman | The Game");
         this.parentScene.setTitle("Hey, " + gameState.get("playerName") + "!");
-        this.hintWoord = new HintWoord(Woordlijst.getRandomWord());
+        this.hintWoord = new HintWoord(woordenlijst.getRandomWord());
         this.startCycle(this.hintWoord, this.parentScene, inputHintText);
         this.guesses = 0;
     }

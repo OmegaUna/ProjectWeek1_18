@@ -45,7 +45,7 @@ public class PlayerSettings {
     }
     public void start() {
         VBox pane = new VBox();
-        pane.getChildren().add(new Text("Voor dat je begint, typ je hieronder je playernaam!"));
+        pane.getChildren().add(new Text("Voor dat je begint, typ je hieronder je spelersnaam!"));
 
         TextField field = new TextField();
 
